@@ -5,6 +5,7 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+
 Plug 'vimwiki/vimwiki'
 Plug 'rbong/vim-crystalline'
 Plug 'tpope/vim-commentary'
@@ -18,6 +19,12 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-maximizer'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+
 call plug#end()
 
 
@@ -86,6 +93,24 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Copy a line to clipboard
     nnoremap <leader>y "+yy
 
+" Find files using Telescope command-line sugar.
+    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" completion nvim
+    " Use <Tab> and <S-Tab> to navigate through popup menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " Set completeopt to have a better completion experience
+    set completeopt=menuone,noinsert,noselect
+
+    " Avoid showing message extra message when using completion
+    set shortmess+=c
+
+    let g:completion_enable_auto_popup = 1
+
 " Map space to leader in normal mode:
     nmap <SPACE> <leader>
 
@@ -117,9 +142,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     let g:neovide_refresh_rate=120
     let g:neovide_no_idle=v:true
 
-" Enable autocompletion
-	set wildmode=longest,list,full
-
 " Disables automatic commenting on newline
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -147,3 +169,11 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     let g:crystalline_statusline_fn = 'StatusLine'
     let g:crystalline_theme = 'gruvbox'
     set laststatus=2
+
+
+" Lua
+lua << EOF
+require'lspconfig'.pylsp.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+
+EOF
