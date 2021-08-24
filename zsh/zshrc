@@ -22,15 +22,14 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# Fuck matlab
-export MATLAB_LOG_DIR=/dev/null
+#Use home and end to navigate terminal
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
-# Ghidra
-export GHIDRA_INSTALL_DIR=/opt/ghidra_9.1.2_PUBLIC
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
-# go
-export GOPATH=/home/Dropbox/go
-
+# vi mode
 bindkey -v
 export KEYTIMEOUT=1
 # Reverse searching
@@ -46,14 +45,6 @@ bindkey '^W' ctrl-w-backward-delete-word
 
 # Reverse menu complete
 bindkey '^[[Z' reverse-menu-complete
-
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -95,11 +86,9 @@ alias less="less -r -i"
 # alias conda-start="export PATH=/home/ks/.local/anaconda3/bin:$PATH"
 # alias conda-start="source ~/.local/bin/conda-init"
 # alias conda-start="source /opt/anaconda3/bin/activate"
-alias conda-start="source /opt/anaconda/bin/activate"
 alias xclip="xclip -selection c"
 alias binja="binaryninja"
 alias du-sort="du -h -d 1 | sort -h"
-alias cinebench="~/.local/share/Steam/steamapps/common/Proton\ 5.0/dist/bin/wine64 ~/.local/share/benchmarks/cinebench/Cinebench.exe -noopengl"
 
 # Ranger quit in current directory
 alias ranger='ranger --choosedir=$HOME/.cache/rangerdir; LASTDIR=`cat $HOME/.cache/rangerdir`; cd "$LASTDIR"'
