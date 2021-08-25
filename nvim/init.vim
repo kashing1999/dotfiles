@@ -7,15 +7,14 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'vimwiki/vimwiki'
-Plug 'rbong/vim-crystalline'
 Plug 'tpope/vim-commentary'
-Plug 'morhetz/gruvbox'
+Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
+Plug 'ellisonleao/gruvbox.nvim', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'iCyMind/NeoSolarized'
 Plug 'jiangmiao/auto-pairs'
-Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'jremmen/vim-ripgrep'
 Plug 'szw/vim-maximizer'
@@ -23,7 +22,15 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'hoob3rt/lualine.nvim'
+Plug 'tveskag/nvim-blame-line'
 
 call plug#end()
 
@@ -35,11 +42,11 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Relative number
     set number relativenumber
-	augroup numbertoggle
-	  autocmd!
-	  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-	  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-	augroup END
+	" augroup numbertoggle
+	"   autocmd!
+	"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	"   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+	" augroup END
 
 " Stop search highlight
 	nnoremap <esc><esc> :nohl<return><esc>
@@ -48,9 +55,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     nnoremap c "_c
 
 " GUI
-    set guifont=hack:h24
+    set guifont=Hack\ Nerd\ Font\ Mono:h12
 
-" remap motion
+"remap motion
     nnoremap <PageUp>   <C-u>
     nnoremap <PageDown> <C-d>
 
@@ -74,8 +81,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     noremap <leader>0 :tablast<cr>
 
 " Go to last active tab
-    nnoremap <leader><Left>  :tabprevious<CR>
-    nnoremap <leader><Right> :tabnext<CR>
+    nnoremap <leader><Left>  :tabprevious<cr>
+    nnoremap <leader><Right> :tabnext<cr>
 
 " Resize window
     nnoremap <c-Left>  :vertical resize -5<cr>
@@ -85,6 +92,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Use ripgrep to search
     nnoremap <leader>r :Rg -i ./%<Left><Left><Left><Left><space>
+
+" Maximizer
+    nnoremap <leader>m :MaximizerToggle<cr>
 
 " Faster saving:
     nnoremap <leader>q <esc>:q<return>
@@ -99,17 +109,11 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" completion nvim
-    " Use <Tab> and <S-Tab> to navigate through popup menu
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " Set completeopt to have a better completion experience
-    set completeopt=menuone,noinsert,noselect
+" coq autocomplete
+    let g:coq_settings = { 'auto_start': 'shut-up' }
 
-    " Avoid showing message extra message when using completion
-    set shortmess+=c
-
-    let g:completion_enable_auto_popup = 1
+" Reload nvim config
+    nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Map space to leader in normal mode:
     nmap <SPACE> <leader>
@@ -123,6 +127,13 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Color:
     set termguicolors
 	set background=dark
+
+" Replace all is aliased to S.
+	nnoremap S :%s//g<Left><Left>
+
+" Automatically deletes all trailing whitespace on save.
+	autocmd BufWritePre * %s/\s\+$//e
+
 
     " let g:jellybeans_overrides = {
     " \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
@@ -148,32 +159,101 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Splits open at the bottom and right
 	set splitbelow splitright
 
-" Nerd tree
-	map <leader>p :NERDTreeToggle<CR>
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    let g:NERDTreeWinSize=35
+" Chad tree
+	map <leader>p :CHADopen<cr>
+    let g:chadtree_settings = { "theme.text_colour_set": "solarized_universal" }
 
-" Replace all is aliased to S.
-	nnoremap S :%s//g<Left><Left>
+" Registers
+    let g:registers_window_border = "rounded" "'none' by default, can be 'none', 'single','double', 'rounded', 'solid', or 'shadow' (requires Neovim 0.5.0+)
 
-" Automatically deletes all trailing whitespace on save.
-	autocmd BufWritePre * %s/\s\+$//e
+" lspsaga
+    nnoremap <silent> gh :Lspsaga lsp_finder<cr>
+    nnoremap <silent><leader>gca :Lspsaga code_action<cr>
+    vnoremap <silent><leader>gca :<C-U>Lspsaga range_code_action<cr>
+    nnoremap <silent>K :Lspsaga hover_doc<cr>
+    " scroll down hover doc or scroll in definition preview
+    nnoremap <silent> <PageDown> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>
+    " scroll up hover doc
+    nnoremap <silent> <PageUp> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>
 
-" Crystaline
-    function! StatusLine(...)
-      return crystalline#mode() . crystalline#right_mode_sep('')
-            \ . ' %f%h%w%m%r ' . crystalline#right_sep('', 'Fill') . '%='
-            \ . crystalline#left_sep('', 'Fill') . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
-    endfunction
-    let g:crystalline_enable_sep = 1
-    let g:crystalline_statusline_fn = 'StatusLine'
-    let g:crystalline_theme = 'gruvbox'
-    set laststatus=2
+    nnoremap <silent>gr :Lspsaga rename<CR>
 
+" BlameLine
+    nnoremap <silent> <leader>b :ToggleBlameLine<CR>
 
 " Lua
 lua << EOF
-require'lspconfig'.pylsp.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+local lsp = require "lspconfig"
+local coq = require "coq" -- add this
+local saga = require 'lspsaga'
+
+-- lsp
+lsp.pylsp.setup(coq.lsp_ensure_capabilities())
+lsp.clangd.setup(coq.lsp_ensure_capabilities())
+
+-- lspsaga
+saga.init_lsp_saga()
+
+-- colorizer
+require'colorizer'.setup()
+
+-- icons
+require'nvim-web-devicons'.setup {
+     -- your personnal icons can go here (to override)
+     -- DevIcon will be appended to `name`
+     override = {
+      zsh = {
+        icon = "",
+        color = "#428850",
+        name = "Zsh"
+      }
+     };
+     -- globally enable default icons (default to false)
+     -- will get overriden by `get_icons` option
+     default = true;
+}
+
+-- treesitter setup
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = true,
+  },
+}
+
+require'lualine'.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'gruvbox',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
 
 EOF
