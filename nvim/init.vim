@@ -10,10 +10,12 @@ Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
 Plug 'ellisonleao/gruvbox.nvim', { 'branch': 'main' }
+Plug 'sainnhe/gruvbox-material'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'iCyMind/NeoSolarized'
+Plug 'marko-cerovac/material.nvim', { 'branch': 'main' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 Plug 'jremmen/vim-ripgrep'
@@ -31,6 +33,7 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'hoob3rt/lualine.nvim'
 Plug 'tveskag/nvim-blame-line'
+Plug 'numtostr/FTerm.nvim'
 
 call plug#end()
 
@@ -58,8 +61,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     set guifont=Hack\ Nerd\ Font\ Mono:h12
 
 "remap motion
-    nnoremap <PageUp>   <C-u>
-    nnoremap <PageDown> <C-d>
+    "nnoremap <silent> <PageUp>   <C-U>
+    "nnoremap <silent> <PageDown> <C-D>
 
 
 " Shortcutting split navigation, saving a keypress:
@@ -140,7 +143,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     " \}
     " let g:jellybeans_overrides['background']['guibg'] = 'none'
 
-	colorscheme gruvbox
+	colorscheme gruvbox-material
 	set t_Co=256
 
     if $TERM == 'st-256color'
@@ -161,7 +164,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Chad tree
 	map <leader>p :CHADopen<cr>
-    let g:chadtree_settings = { "theme.text_colour_set": "solarized_universal" }
+    let g:chadtree_settings = { "theme.text_colour_set": "nerdtree_syntax_dark" }
 
 " Registers
     let g:registers_window_border = "rounded" "'none' by default, can be 'none', 'single','double', 'rounded', 'solid', or 'shadow' (requires Neovim 0.5.0+)
@@ -181,18 +184,65 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " BlameLine
     nnoremap <silent> <leader>b :ToggleBlameLine<CR>
 
+" Floating terminal
+    nnoremap <C-e> <Cmd>lua require'FTerm'.toggle()<CR>
+    tnoremap <C-e> <Cmd>lua require'FTerm'.toggle()<CR>
+
 " Lua
 lua << EOF
 local lsp = require "lspconfig"
 local coq = require "coq" -- add this
-local saga = require 'lspsaga'
+local saga = require "lspsaga"
 
 -- lsp
 lsp.pylsp.setup(coq.lsp_ensure_capabilities())
 lsp.clangd.setup(coq.lsp_ensure_capabilities())
 
 -- lspsaga
-saga.init_lsp_saga()
+saga.init_lsp_saga {
+    -- add your config value here
+    -- default value
+    use_saga_diagnostic_sign = true,
+    error_sign = '',
+    warn_sign = '',
+    hint_sign = '',
+    infor_sign = '',
+    dianostic_header_icon = '   ',
+    code_action_icon = ' ',
+    code_action_prompt = {
+      enable = true,
+      sign = true,
+      sign_priority = 20,
+      virtual_text = true,
+    },
+    finder_definition_icon = '  ',
+    finder_reference_icon = '  ',
+    max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
+    finder_action_keys = {
+       open = 'o', vsplit = 's',split = 'i',quit = 'q'
+    },
+    code_action_keys = {
+      quit = 'q',exec = '<CR>'
+    },
+    rename_action_keys = {
+      quit = '<C-c>',exec = '<CR>'  -- quit can be a table
+    },
+    definition_preview_icon = '  ',
+    -- "single" "double" "round" "plus"
+    border_style = "round",
+    rename_prompt_prefix = '➤',
+}
+
+-- fterm
+require'FTerm'.setup({
+    dimensions  = {
+        height = 0.8,
+        width = 0.8,
+        x = 0.5,
+        y = 0.5
+    },
+    border = 'double' -- or 'double'
+})
 
 -- colorizer
 require'colorizer'.setup()
@@ -231,7 +281,7 @@ require'nvim-treesitter.configs'.setup {
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'gruvbox_material',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
