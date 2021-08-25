@@ -32,7 +32,7 @@ Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'hoob3rt/lualine.nvim'
-Plug 'tveskag/nvim-blame-line'
+Plug 'f-person/git-blame.nvim'
 Plug 'numtostr/FTerm.nvim'
 
 call plug#end()
@@ -181,8 +181,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
     nnoremap <silent>gr :Lspsaga rename<CR>
 
-" BlameLine
-    nnoremap <silent> <leader>b :ToggleBlameLine<CR>
+" blame
+    nnoremap <silent> <leader>b :GitBlameToggle<CR>
 
 " Floating terminal
     nnoremap <C-e> <Cmd>lua require'FTerm'.toggle()<CR>
