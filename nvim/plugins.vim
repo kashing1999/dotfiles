@@ -20,17 +20,20 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'f-person/git-blame.nvim'
 
     " Ui
+    Plug 'crispgm/nvim-tabline', {'branch': 'main'}
     Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+    Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+    Plug 'hoob3rt/lualine.nvim'
+    Plug 'numtostr/FTerm.nvim'
+
+    " Color
     Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
     Plug 'iCyMind/NeoSolarized'
     Plug 'marko-cerovac/material.nvim', { 'branch': 'main' }
     Plug 'sainnhe/gruvbox-material'
     Plug 'ellisonleao/gruvbox.nvim', { 'branch': 'main' }
     Plug 'norcalli/nvim-colorizer.lua'
-    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-    Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
-    Plug 'hoob3rt/lualine.nvim'
-    Plug 'numtostr/FTerm.nvim'
 
     " Telescope
     Plug 'nvim-lua/plenary.nvim'

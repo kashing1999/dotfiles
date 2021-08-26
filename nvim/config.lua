@@ -6,6 +6,8 @@ local colorizer = require "colorizer"
 local icons = require "nvim-web-devicons"
 local treesitter = require "nvim-treesitter.configs"
 local lualine = require "lualine"
+local tabline = require "tabline"
+
 
 -- lsp
 lsp.pylsp.setup(coq.lsp_ensure_capabilities())
@@ -30,7 +32,7 @@ saga.init_lsp_saga {
     },
     finder_definition_icon = '  ',
     finder_reference_icon = '  ',
-    max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
+    max_preview_lines = 30, -- preview lines of lsp_finder and definition preview
     finder_action_keys = {
        open = 'o', vsplit = 's',split = 'i',quit = 'q'
     },
@@ -59,6 +61,9 @@ fterm.setup({
 
 -- colorizer
 colorizer.setup()
+
+-- tabline
+tabline.setup{}
 
 -- icons
 icons.setup {

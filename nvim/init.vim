@@ -83,6 +83,7 @@ endif
     nnoremap <leader><Left>  :tabprevious<cr>
     nnoremap <leader><Right> :tabnext<cr>
 
+
 " Resize window
     nnoremap <c-Left>  :vertical resize -5<cr>
     nnoremap <c-Down>  :resize +5<cr>
@@ -117,7 +118,7 @@ endif
 
 " ms-jpq/chadtree
 " File manager
-    let g:chadtree_settings = { "theme.text_colour_set": "nerdtree_syntax_dark" }
+    let g:chadtree_settings = { "theme.text_colour_set": "nerdtree_syntax_dark", "keymap.tertiary": ["t", "<2-leftmouse>"], "keymap.trash" : []}
 	nnoremap <leader>p :CHADopen<cr>
 
 " 'tversteeg/registers.nvim'
