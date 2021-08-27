@@ -93,6 +93,8 @@ endif
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
+    nnoremap <PageUp> <c-u>
+
 " ============================================================
 " Plugins config
 " ============================================================
@@ -116,10 +118,17 @@ endif
 " Blazing fast autocomplete
     let g:coq_settings = { 'auto_start': 'shut-up' }
 
-" ms-jpq/chadtree
-" File manager
-    let g:chadtree_settings = { "theme.text_colour_set": "nerdtree_syntax_dark", "keymap.tertiary": ["t", "<2-leftmouse>"], "keymap.trash" : []}
-	nnoremap <leader>p :CHADopen<cr>
+" kyazdani42/nvim-tree.lua
+    if filereadable(expand('~/.config/nvim/nvim_tree.vim'))
+        source ~/.config/nvim/nvim_tree.vim
+    endif
+
+    nnoremap <leader>c :NvimTreeToggle<CR>
+    nnoremap <leader>CC :NvimTreeRefresh<CR>
+    nnoremap <leader>C :NvimTreeFindFile<CR>
+    " NvimTreeOpen, NvimTreeClose and NvimTreeFocus are also available if you need them
+
+
 
 " 'tversteeg/registers.nvim'
 " Tool to view vim registers

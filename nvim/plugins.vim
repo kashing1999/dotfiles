@@ -20,9 +20,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'f-person/git-blame.nvim'
 
     " Ui
-    Plug 'crispgm/nvim-tabline', {'branch': 'main'}
+    Plug 'seblj/nvim-tabline'
     Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+    Plug 'kyazdani42/nvim-tree.lua'
     Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
     Plug 'hoob3rt/lualine.nvim'
     Plug 'numtostr/FTerm.nvim'
