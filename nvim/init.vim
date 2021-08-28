@@ -1,5 +1,5 @@
-if filereadable(expand('~/.config/nvim/plugins.vim'))
-    source ~/.config/nvim/plugins.vim
+if filereadable(expand('~/.config/nvim/plugins/plugins.vim'))
+    source ~/.config/nvim/plugins/plugins.vim
 endif
 
 if filereadable(expand('~/.config/nvim/local.vim'))
@@ -13,6 +13,9 @@ endif
 " Use mouse
     set mouse=a
 
+" Set hidden
+    set hidden
+
 " Relative number
     set number relativenumber
 
@@ -23,7 +26,7 @@ endif
 	set expandtab       " Expand TABs to spaces
 
 " Colors
-    colorscheme gruvbox-material
+    colorscheme everforest
 
     set termguicolors
 	set background=dark
@@ -107,6 +110,11 @@ endif
 " Maximize a window
     nnoremap <leader>m :MaximizerToggle<cr>
 
+" phaazon/hop.nvim
+" hops to a word
+    nnoremap <leader>. :HopWord<cr>
+    nnoremap <leader>, :HopLine<cr>
+
 " nvim-telescope/telescope.nvim
 " Find files using Telescope command-line sugar.
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -119,14 +127,17 @@ endif
     let g:coq_settings = { 'auto_start': 'shut-up' }
 
 " kyazdani42/nvim-tree.lua
-    if filereadable(expand('~/.config/nvim/nvim_tree.vim'))
-        source ~/.config/nvim/nvim_tree.vim
+    if filereadable(expand('~/.config/nvim/plugins/config/nvim_tree.vim'))
+        source ~/.config/nvim/plugins/config/nvim_tree.vim
     endif
 
-    nnoremap <leader>c :NvimTreeToggle<CR>
-    nnoremap <leader>CC :NvimTreeRefresh<CR>
     nnoremap <leader>C :NvimTreeFindFile<CR>
     " NvimTreeOpen, NvimTreeClose and NvimTreeFocus are also available if you need them
+
+" romgrk/barbar.nvim
+    if filereadable(expand('~/.config/nvim/plugins/config/barbar.vim'))
+        source ~/.config/nvim/plugins/config/barbar.vim
+    endif
 
 
 

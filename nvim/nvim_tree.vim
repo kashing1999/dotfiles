@@ -1,9 +1,10 @@
 let g:nvim_tree_side = 'left' "left by default
-let g:nvim_tree_width = 30 "30 by default, can be width_in_columns or 'width_in_percent%'
+let g:nvim_tree_width = 40 "30 by default, can be width_in_columns or 'width_in_percent%'
+let g:nvim_tree_auto_open = 0
 let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-let g:nvim_tree_follow = 0 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
 let g:nvim_tree_indent_markers = 0 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
 let g:nvim_tree_git_hl = 0 "0 by default, will enable file highlight for git attributes (can be used without the icons).
 let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.
 let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
@@ -83,7 +84,7 @@ lua <<EOF
     local tree_cb = require'nvim-tree.config'.nvim_tree_callback
     vim.g.nvim_tree_bindings = {
       { key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
-      { key = {"<2-RightMouse>", "c"},    cb = tree_cb("cd") },
+      { key = {"<2-RightMouse>", "c"},        cb = tree_cb("cd") },
       { key = "w",                            cb = tree_cb("vsplit") },
       { key = "W",                            cb = tree_cb("split") },
       { key = "t",                            cb = tree_cb("tabnew") },
@@ -99,7 +100,7 @@ lua <<EOF
       { key = "H",                            cb = tree_cb("toggle_dotfiles") },
       { key = "R",                            cb = tree_cb("refresh") },
       { key = "a",                            cb = tree_cb("create") },
-      -- { key = "d",                            cb = tree_cb("remove") },
+      { key = "d",                            cb = tree_cb("remove") },
       { key = "r",                            cb = tree_cb("rename") },
       { key = "<C-r>",                        cb = tree_cb("full_rename") },
       { key = "x",                            cb = tree_cb("cut") },
@@ -115,5 +116,32 @@ lua <<EOF
       { key = "q",                            cb = tree_cb("close") },
       { key = "g?",                           cb = tree_cb("toggle_help") },
     }
+
+toggle = function()
+    local open = function()
+      require'nvim-tree'.find_file(true)
+      require'bufferline.state'.set_offset(42, ' Nvim Tree')
+    end
+
+    local close = function()
+      require'nvim-tree'.close()
+      require'bufferline.state'.set_offset(0)
+    end
+
+    local view = require 'nvim-tree.view'
+    local lib = require 'nvim-tree.lib'
+
+    if view.win_open() then
+      close()
+    else
+      if vim.g.nvim_tree_follow == 1 then
+        open()
+      else
+        lib.open()
+      end
+    end
+  end
+
+vim.api.nvim_set_keymap('n', '<Leader>c', '<cmd> lua toggle()<CR>',  {noremap = true})
 
 EOF

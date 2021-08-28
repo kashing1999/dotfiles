@@ -18,9 +18,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'jremmen/vim-ripgrep'
     Plug 'szw/vim-maximizer'
     Plug 'f-person/git-blame.nvim'
+    Plug 'yamatsum/nvim-cursorline', { 'branch': 'main' }
+    Plug 'phaazon/hop.nvim'
+    Plug 'beauwilliams/focus.nvim'
 
     " Ui
-    Plug 'seblj/nvim-tabline'
+    "Plug 'seblj/nvim-tabline'
+    Plug 'romgrk/barbar.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
@@ -32,7 +36,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'iCyMind/NeoSolarized'
     Plug 'marko-cerovac/material.nvim', { 'branch': 'main' }
     Plug 'sainnhe/gruvbox-material'
-    Plug 'ellisonleao/gruvbox.nvim', { 'branch': 'main' }
+    Plug 'sainnhe/everforest'
     Plug 'norcalli/nvim-colorizer.lua'
 
     " Telescope

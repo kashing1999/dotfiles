@@ -6,7 +6,7 @@ local colorizer = require "colorizer"
 local icons = require "nvim-web-devicons"
 local treesitter = require "nvim-treesitter.configs"
 local lualine = require "lualine"
-local tabline = require "tabline"
+local focus = require('focus')
 
 -- lsp
 lsp.pylsp.setup(coq.lsp_ensure_capabilities())
@@ -61,6 +61,9 @@ fterm.setup({
 -- colorizer
 colorizer.setup()
 
+-- focus
+focus.enable = false
+
 -- icons
 icons.setup {
      -- your personnal icons can go here (to override)
@@ -96,7 +99,7 @@ treesitter.setup {
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox_material',
+    theme = 'everforest',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
@@ -118,16 +121,17 @@ lualine.setup {
     lualine_z = {}
   },
   tabline = {},
+
   extensions = {}
 }
 
-tabline.setup{
-    no_name = '[No Name]',    -- Name for buffers with no name
-    modified_icon = '',      -- Icon for showing modified buffer
-    close_icon = '',         -- Icon for closing tab with mouse
-    separator = "▌",          -- Separator icon on the left side
-    padding = 3,              -- Prefix and suffix space
-    color_all_icons = false,  -- Color devicons in active and inactive tabs
-    always_show_tabs = true, -- Always show tabline
-    right_separator = false,  -- Show right separator on the last tab
-}
+-- tabline.setup{
+--     no_name = '[No Name]',    -- Name for buffers with no name
+--     modified_icon = '',      -- Icon for showing modified buffer
+--     close_icon = '',         -- Icon for closing tab with mouse
+--     separator = "▌",          -- Separator icon on the left side
+--     padding = 3,              -- Prefix and suffix space
+--     color_all_icons = false,  -- Color devicons in active and inactive tabs
+--     always_show_tabs = true, -- Always show tabline
+--     right_separator = false,  -- Show right separator on the last tab
+-- }
