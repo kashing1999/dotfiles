@@ -53,10 +53,10 @@ endif
     let g:dashboard_default_executive ='telescope'
     let g:dashboard_custom_shortcut={
     \ 'last_session'       : 'SPC p l',
+    \ 'find_file'          : 'SPC f f',
+    \ 'change_colorscheme' : 'SPC f c',
     \ 'find_history'       : 'SPC p h',
-    \ 'find_file'          : 'SPC p f',
     \ 'new_file'           : 'SPC p n',
-    \ 'change_colorscheme' : 'SPC p c',
     \ 'find_word'          : 'SPC p a',
     \ 'book_marks'         : 'SPC p b',
     \ }

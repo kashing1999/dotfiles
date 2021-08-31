@@ -59,10 +59,14 @@ nest.applyKeymaps {
         -- nvim-telescope/telescope.nvim
         -- Find files using Telescope command-line sugar.
         {'f', {
-            {'f', '<Cmd>Telescope find_files<CR>'},
+            {'f', '<Cmd>DashboardFindFile<CR>'},
+            {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
             {'g', '<Cmd>Telescope live_grep<CR>'},
             {'b', '<Cmd>Telescope buffers<CR>'},
             {'h', '<Cmd>Telescope help_tags<CR>'},
+            {'m', '<Cmd>Telescope man_pages<CR>'},
+            {'q', '<Cmd>Telescope quickfix<CR>'},
+            {'r', '<Cmd>Telescope registers<CR>'},
         }},
 
         -- 'f-person/git-blame.nvim'
@@ -97,9 +101,9 @@ nest.applyKeymaps {
 
         -- glepnir/dashboard-nvim
         {'p', {
+            {'s', '<Cmd>SessionSave<CR>'},
+            {'l', '<Cmd>SessionLoad<CR>'},
             {'h', '<Cmd>DashboardFindHistory<CR>'},
-            {'f', '<Cmd>DashboardFindFile<CR>'},
-            {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
             {'a', '<Cmd>DashboardFindWord<CR>'},
             {'b', '<Cmd>DashboardJumpMark<CR>'},
             {'n', '<Cmd>DashboardNewFile<CR>'},
