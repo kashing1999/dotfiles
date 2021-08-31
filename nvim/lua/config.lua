@@ -1,51 +1,28 @@
 local lsp = require "lspconfig"
 local coq = require "coq"
-local saga = require "lspsaga"
 local fterm = require "FTerm"
 local colorizer = require "colorizer"
 local icons = require "nvim-web-devicons"
 local treesitter = require "nvim-treesitter.configs"
 local lualine = require "lualine"
-local focus = require('focus')
+local indent = require "indent_blankline"
+local navigator = require "navigator"
+local autopairs = require "nvim-autopairs"
 
 -- lsp
 lsp.pylsp.setup(coq.lsp_ensure_capabilities())
 lsp.clangd.setup(coq.lsp_ensure_capabilities())
 
--- lspsaga
-saga.init_lsp_saga {
-    -- add your config value here
-    -- default value
-    use_saga_diagnostic_sign = true,
-    error_sign = '',
-    warn_sign = '',
-    hint_sign = '',
-    infor_sign = '',
-    dianostic_header_icon = '   ',
-    code_action_icon = ' ',
-    code_action_prompt = {
-      enable = true,
-      sign = true,
-      sign_priority = 20,
-      virtual_text = true,
-    },
-    finder_definition_icon = '  ',
-    finder_reference_icon = '  ',
-    max_preview_lines = 30, -- preview lines of lsp_finder and definition preview
-    finder_action_keys = {
-       open = 'o', vsplit = 's',split = 'i',quit = 'q'
-    },
-    code_action_keys = {
-      quit = 'q',exec = '<CR>'
-    },
-    rename_action_keys = {
-      quit = '<C-c>',exec = '<CR>'  -- quit can be a table
-    },
-    definition_preview_icon = '  ',
-    -- "single" "double" "round" "plus"
-    border_style = "round",
-    rename_prompt_prefix = '➤',
-}
+navigator.setup({
+  default_mapping = true,  -- set to false if you will remap every key
+  treesitter_analysis = true, -- treesitter variable context
+  transparency = 80, -- 0 ~ 100 blur the main window, 100: fully transparent, 0: opaque,  set to nil or 100 to disable it
+  code_action_prompt = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
+  keymaps ={
+      {key = "<leader>gca", mode = "n", func = "code_action()"},
+      {key = "<leader>gcA", mode = "v", func = "range_code_action()"}
+  }
+})
 
 -- fterm
 fterm.setup({
@@ -61,8 +38,8 @@ fterm.setup({
 -- colorizer
 colorizer.setup()
 
--- focus
-focus.enable = false
+-- nvim autopairs
+autopairs.setup()
 
 -- icons
 icons.setup {
@@ -75,9 +52,35 @@ icons.setup {
         name = "Zsh"
       }
      };
-     -- globally enable default icons (default to false)
-     -- will get overriden by `get_icons` option
-     default = true;
+     icons = {
+       -- Code action
+       code_action_icon = " ",
+       -- code lens
+       code_lens_action_icon = " ",
+       -- Diagnostics
+       diagnostic_head = '🐛',
+       diagnostic_head_severity_1 = "🈲",
+       diagnostic_head_severity_2 = "☣️",
+       diagnostic_head_severity_3 = "👎",
+       diagnostic_head_description = "📛",
+       diagnostic_virtual_text = "🦊",
+       diagnostic_file = "🚑",
+       -- Values
+       value_changed = "📝",
+       value_definition = "🦕",
+       -- Treesitter
+       match_kinds = {
+         var = " ", -- "👹", -- Vampaire
+         method = "ƒ ", --  "🍔", -- mac
+         ["function"] = " ", -- "🤣", -- Fun
+         parameter = "  ", -- Pi
+         associated = "🤝",
+         namespace = "🚀",
+         type = " ",
+         field = "🏈"
+       },
+       treesitter_defult = "🌲"
+     }
 }
 
 -- treesitter setup
@@ -102,7 +105,7 @@ lualine.setup {
     theme = 'everforest',
     component_separators = {'', ''},
     section_separators = {'', ''},
-    disabled_filetypes = {}
+    disabled_filetypes = {},
   },
   sections = {
     lualine_a = {'mode'},
@@ -116,22 +119,22 @@ lualine.setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_x = {'filetype'},
     lualine_y = {},
     lualine_z = {}
   },
   tabline = {},
 
-  extensions = {}
+  extensions = {'nvim-tree'}
 }
 
--- tabline.setup{
---     no_name = '[No Name]',    -- Name for buffers with no name
---     modified_icon = '',      -- Icon for showing modified buffer
---     close_icon = '',         -- Icon for closing tab with mouse
---     separator = "▌",          -- Separator icon on the left side
---     padding = 3,              -- Prefix and suffix space
---     color_all_icons = false,  -- Color devicons in active and inactive tabs
---     always_show_tabs = true, -- Always show tabline
---     right_separator = false,  -- Show right separator on the last tab
--- }
+vim.opt.listchars = {
+    eol = "↴",
+}
+
+indent.setup {
+    char = "|",
+    buftype_exclude = {"terminal"},
+    filetype_exclude = {"dashboard"},
+    show_end_of_line = true,
+}
