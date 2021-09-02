@@ -119,8 +119,8 @@ nest.applyKeymaps {
 
         -- 'numtostr/FTerm.nvim'
         -- Floating terminal in vim
-        {'e>', '<Cmd>lua require"FTerm".toggle()<CR>'},
-        {'e>', '<Cmd>lua require"FTerm".toggle()<CR>', mode = 't'},
+        {'k>', '<Cmd>lua require"FTerm".toggle()<CR>'},
+        {'k>', '<Cmd>lua require"FTerm".toggle()<CR>', mode = 't'},
 
         -- romgrk/barbar.nvim
         {'s>', '<Cmd>BufferPick<CR>'},

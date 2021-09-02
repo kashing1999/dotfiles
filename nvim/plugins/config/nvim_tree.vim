@@ -1,6 +1,6 @@
 let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 40 "30 by default, can be width_in_columns or 'width_in_percent%'
-let g:nvim_tree_auto_open = 0
+let g:nvim_tree_auto_open = 1
 let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
 let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
 let g:nvim_tree_indent_markers = 0 "0 by default, this option shows indent markers when folders are open

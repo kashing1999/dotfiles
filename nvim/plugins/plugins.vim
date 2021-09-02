@@ -40,6 +40,7 @@ call plug#begin('~/.config/nvim/plugins/plugged')
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
     " Lsp and syntax
     Plug 'neovim/nvim-lspconfig'
