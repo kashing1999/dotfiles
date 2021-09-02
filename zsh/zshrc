@@ -30,9 +30,10 @@ RPROMPT=\$vcs_info_msg_0_
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats '%b'
 
+WORDCHARS=${WORDCHARS/\//}
+
 # C-w to delete word
 ctrl-w-backward-delete-word() {
-    local WORDCHARS=${WORDCHARS/\//}
     zle backward-delete-word
 }
 zle -N ctrl-w-backward-delete-word
