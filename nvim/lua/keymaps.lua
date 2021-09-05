@@ -27,7 +27,7 @@ nest.applyKeymaps {
 
     -- szw/vim-maximizer
     -- Use ripgrep to search for files
-    {'R', ':Rg -i ./%<Left><Left><Left><Left> ', options = { silent = false }},
+    {'R', ':Rg -i %<Left><Left><Left><Left><Left> ', options = { silent = false }},
 
     -- leader key remaps
     { '<leader>', {
@@ -69,9 +69,22 @@ nest.applyKeymaps {
             {'r', '<Cmd>Telescope registers<CR>'},
         }},
 
-        -- 'f-person/git-blame.nvim'
-        -- git blame integration in vim
-        {'b', '<Cmd>GitBlameToggle<CR>', options = { silent = true }},
+        -- f-person/git-blame.nvim
+        {'b', '<Cmd>GitBlameToggle<CR>'},
+
+        -- lewis6991/gitsigns.nvim
+        {'g', {
+            {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
+            {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
+            {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},
+            {'r', '<Cmd>lua require"gitsigns".reset_hunk()<CR>'},
+            {'r', '<Cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
+            {'R', '<Cmd>lua require"gitsigns".reset_buffer()<CR>'},
+            {'p', '<Cmd>lua require"gitsigns".preview_hunk()<CR>'},
+            {'b', '<Cmd>lua require"gitsigns".blame_line(true)<CR>'},
+            {'S', '<Cmd>lua require"gitsigns".stage_buffer()<CR>'},
+            {'U', '<Cmd>lua require"gitsigns".reset_buffer_index()<CR>'},
+        }};
 
         -- kyazdani42/nvim-tree.lua
         {'c', '<Cmd> lua toggle()<CR>'},
@@ -107,7 +120,7 @@ nest.applyKeymaps {
             {'a', '<Cmd>DashboardFindWord<CR>'},
             {'b', '<Cmd>DashboardJumpMark<CR>'},
             {'n', '<Cmd>DashboardNewFile<CR>'},
-        }}
+        }},
     }},
 
     { '<C-', {
@@ -117,10 +130,10 @@ nest.applyKeymaps {
         {'Up>',    '<Cmd>resize -5<CR>'},
         {'Right>', '<Cmd>vertical resize +5<CR>'},
 
-        -- 'numtostr/FTerm.nvim'
-        -- Floating terminal in vim
-        {'k>', '<Cmd>lua require"FTerm".toggle()<CR>'},
-        {'k>', '<Cmd>lua require"FTerm".toggle()<CR>', mode = 't'},
+        -- -- 'numtostr/FTerm.nvim'
+        -- -- Floating terminal in vim
+        -- {'k>', '<Cmd>lua require"FTerm".toggle()<CR>'},
+        -- {'k>', '<Cmd>lua require"FTerm".toggle()<CR>', mode = 't'},
 
         -- romgrk/barbar.nvim
         {'s>', '<Cmd>BufferPick<CR>'},

@@ -7,26 +7,33 @@ endif
 call plug#begin('~/.config/nvim/plugins/plugged')
 
     " Quality of life
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-surround'
+    Plug 'lewis6991/impatient.nvim'
     Plug 'tpope/vim-sensible'
-    Plug 'windwp/nvim-autopairs'
     Plug 'jremmen/vim-ripgrep'
     Plug 'szw/vim-maximizer'
-    Plug 'f-person/git-blame.nvim'
-    Plug 'phaazon/hop.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'LionC/nest.nvim'
+    Plug 'Vhyrro/neorg'
 
-    " Ui
+    " Text editing
+    Plug 'phaazon/hop.nvim'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-commentary'
+    Plug 'windwp/nvim-autopairs'
+
+    " Git
+    Plug 'tpope/vim-fugitive'
+    Plug 'f-person/git-blame.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
+
+   " Ui elements
     Plug 'seblj/nvim-tabline'
     Plug 'romgrk/barbar.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
     Plug 'hoob3rt/lualine.nvim'
-    Plug 'numtostr/FTerm.nvim'
+    Plug 'akinsho/toggleterm.nvim'
     Plug 'glepnir/dashboard-nvim'
 
     " Color
@@ -44,10 +51,20 @@ call plug#begin('~/.config/nvim/plugins/plugged')
 
     " Lsp and syntax
     Plug 'neovim/nvim-lspconfig'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
     Plug 'ray-x/navigator.lua'
     Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
     Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 call plug#end()
+
+" kyazdani42/nvim-tree.lua
+    if filereadable(expand('~/.config/nvim/plugins/config/nvim_tree.vim'))
+        source ~/.config/nvim/plugins/config/nvim_tree.vim
+    endif
+
+" romgrk/barbar.nvim
+    if filereadable(expand('~/.config/nvim/plugins/config/barbar.vim'))
+        source ~/.config/nvim/plugins/config/barbar.vim
+    endif

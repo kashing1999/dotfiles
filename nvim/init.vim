@@ -31,10 +31,11 @@ endif
 " Colors
 
     set termguicolors
-    let g:everforest_background = 'medium'
 	set background=dark
+    let g:everforest_background = 'medium'
+    let g:gruvbox_material_disable_italic_comment = 1
 
-    colorscheme everforest
+    colorscheme gruvbox-material
 
 " Automatically deletes all trailing whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e
@@ -44,6 +45,9 @@ endif
 
 " Splits open at the bottom and right
 	set splitbelow splitright
+
+" Live substitution
+    set inccommand=nosplit
 
 " ============================================================
 " Plugins config
@@ -60,30 +64,28 @@ endif
     \ 'find_word'          : 'SPC p a',
     \ 'book_marks'         : 'SPC p b',
     \ }
+    let g:dashboard_custom_header = [
+    \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+    \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+    \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+    \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+    \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+    \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+    \]
 
 " ms-jpq/coq_nvim
 " Blazing fast autocomplete
     let g:coq_settings = { 'auto_start': 'shut-up' }
 
-" kyazdani42/nvim-tree.lua
-    if filereadable(expand('~/.config/nvim/plugins/config/nvim_tree.vim'))
-        source ~/.config/nvim/plugins/config/nvim_tree.vim
-    endif
-
-" romgrk/barbar.nvim
-    if filereadable(expand('~/.config/nvim/plugins/config/barbar.vim'))
-        source ~/.config/nvim/plugins/config/barbar.vim
-    endif
-
 " 'tversteeg/registers.nvim'
-" Tool to view vim registers
     let g:registers_window_border = "rounded"
 
 " 'f-person/git-blame.nvim'
-" git blame integration in vim
     let g:gitblame_enabled = 0
 
-" Load config.lua
+" ============================================================
+" Load lua configs
+" ============================================================
 lua << EOF
     require('config')
     require('keymaps')
