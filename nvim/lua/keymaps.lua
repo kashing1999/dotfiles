@@ -14,7 +14,7 @@ nest.applyKeymaps {
     {'<space>', '<leader>' , options = { noremap = false }},
 
     -- Remap ; into :
-    {';', ':'},
+    {';', ':', options = { noremap = true, silent = false }},
 
     -- Stop search highlight
     {'<esc><esc>', '<Cmd>nohl<CR>'},
