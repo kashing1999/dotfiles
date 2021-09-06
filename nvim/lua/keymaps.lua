@@ -13,6 +13,9 @@ nest.applyKeymaps {
     -- Remap space to leader
     {'<space>', '<leader>' , options = { noremap = false }},
 
+    -- Remap ; into :
+    {';', ':'},
+
     -- Stop search highlight
     {'<esc><esc>', '<Cmd>nohl<CR>'},
 
