@@ -76,7 +76,7 @@ nest.applyKeymaps {
         {'b', '<Cmd>GitBlameToggle<CR>'},
 
         -- lewis6991/gitsigns.nvim
-        {'g', {
+        {'h', {
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
             {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},

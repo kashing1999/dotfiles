@@ -1,43 +1,50 @@
-local colorizer = require('colorizer')
-local icons = require('nvim-web-devicons')
-local indent = require('indent_blankline')
-local autopairs = require('nvim-autopairs')
-local impatient = require('impatient')
+-- Relative numbering
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-colorizer.setup()
+-- Use mouse in all modes
+vim.opt.mouse = 'a'
 
-autopairs.setup()
+-- Set hidden
+vim.opt.hidden = true
 
-icons.setup {
-     -- your personnal icons can go here (to override)
-     -- DevIcon will be appended to `name`
-     override = {
-      zsh = {
-        icon = "",
-        color = "#428850",
-        name = "Zsh"
-      }
-     };
-}
+-- Tab conifg
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
 
-vim.opt.listchars = {
-    eol = "↴",
-}
+-- Colorscheme
+vim.opt.termguicolors = true
+vim.opt.background = 'dark'
+-- vim.g.everforest_disable_italic_comment = true
+vim.g.gruvbox_material_disable_italic_comment = true
+vim.cmd('colorscheme gruvbox-material')
 
-indent.setup {
-    char = "|",
-    buftype_exclude = {"terminal"},
-    filetype_exclude = {"dashboard"},
-    show_end_of_line = true,
-}
+-- Splits open at the bottom and right
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
--- Config files for big extensions
+-- Live substitution
+vim.opt.inccommand = 'nosplit'
+
+-- Disables automatic commenting on newline
+vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
+
+-- Load configuration files for plugins
+require('plugins/impatient')
+require('plugins/autopairs')
 require('plugins/barbar')
+require('plugins/colorizer')
+require('plugins/dashboard')
 require('plugins/git')
+require('plugins/icons')
+require('plugins/indent')
 require('plugins/lsp')
 require('plugins/lualine')
 require('plugins/neorg')
 require('plugins/nvimtree')
+require('plugins/registers')
 require('plugins/telescope')
 require('plugins/toggleterm')
 require('plugins/treesitter')

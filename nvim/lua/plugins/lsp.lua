@@ -1,10 +1,12 @@
-local coq = require('coq')
-local lsp = require('lspconfig')
-local navigator = require('navigator')
+vim.g.coq_settings = { auto_start = 'shut-up' }
 
+local coq = require('coq')
+
+local lsp = require('lspconfig')
 lsp.pylsp.setup(coq.lsp_ensure_capabilities())
 lsp.clangd.setup(coq.lsp_ensure_capabilities())
 
+local navigator = require('navigator')
 navigator.setup({
   default_mapping = true,  -- set to false if you will remap every key
   treesitter_analysis = true, -- treesitter variable context
@@ -18,3 +20,4 @@ navigator.setup({
     format_on_save = false, -- set to false to disasble lsp code format on save (if you are using prettier/efm/formater etc)
   }
 })
+

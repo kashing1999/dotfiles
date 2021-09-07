@@ -1,5 +1,6 @@
 local gitsigns = require('gitsigns')
 
+-- gitsigns conifg
 gitsigns.setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
@@ -23,6 +24,7 @@ gitsigns.setup {
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
     delay = 1000,
   },
+  keymaps = {},
   current_line_blame_formatter_opts = {
     relative_time = false
   },
@@ -44,3 +46,5 @@ gitsigns.setup {
   },
 }
 
+-- blame line
+    vim.g.gitblame_enabled = 0
