@@ -93,17 +93,17 @@ nest.applyKeymaps {
         {'c', '<Cmd> lua toggle()<CR>'},
         {'C', 'NvimTreeFindFile<CR>'},
 
-        -- romgrk/barbar.nvim
-        {'1', '<Cmd>BufferGoto 1<CR>'},
-        {'2', '<Cmd>BufferGoto 2<CR>'},
-        {'3', '<Cmd>BufferGoto 3<CR>'},
-        {'4', '<Cmd>BufferGoto 4<CR>'},
-        {'5', '<Cmd>BufferGoto 5<CR>'},
-        {'6', '<Cmd>BufferGoto 6<CR>'},
-        {'7', '<Cmd>BufferGoto 7<CR>'},
-        {'8', '<Cmd>BufferGoto 8<CR>'},
-        {'9', '<Cmd>BufferGoto 9<CR>'},
-        {'0', '<Cmd>BufferLast<CR>'},
+        -- Switch tabs
+        {'1', '1gt'},
+        {'2', '2gt'},
+        {'3', '3gt'},
+        {'4', '4gt'},
+        {'5', '5gt'},
+        {'6', '6gt'},
+        {'7', '7gt'},
+        {'8', '8gt'},
+        {'9', '9gt'},
+        {'0', '<Cmd>tablast<CR>'},
 
         {'<Left>',  '<Cmd>BufferPrevious<CR>'},
         {'<Right>', '<Cmd>BufferNext<CR>'},
