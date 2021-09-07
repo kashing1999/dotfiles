@@ -20,7 +20,7 @@ vim.g.nvim_tree_lsp_diagnostics = 0 --0 by default, will show lsp diagnostics in
 vim.g.nvim_tree_disable_window_picker = 0 --0 by default, will disable the window picker.
 vim.g.nvim_tree_hijack_cursor = 1 --1 by default, when moving cursor in the tree, will position the cursor at the start of the file on the current line
 vim.g.nvim_tree_icon_padding = ' ' --one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-vim.g.nvim_tree_update_cwd = 0 --0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
+vim.g.nvim_tree_update_cwd = 1 --0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
 vim.g.nvim_tree_respect_buf_cwd = 1 --0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 vim.g.nvim_tree_window_picker_exclude = {
     filetype = {
@@ -39,6 +39,7 @@ vim.g.nvim_tree_special_files = {
     Makefile = true,
     ["README.md"] = true,
     ["readme.md"] = true,
+    ["Makefile"] = true,
 } -- List of filenames that gets highlighted with NvimTreeSpecialFile
 
 vim.gnvim_tree_show_icons = {
@@ -126,7 +127,7 @@ vim.g.nvim_tree_bindings = {
 toggle = function()
     local open = function()
       require'nvim-tree'.find_file(true)
-      require'bufferline.state'.set_offset(42, ' Nvim Tree')
+      require'bufferline.state'.set_offset(43, ' Nvim Tree')
     end
 
     local close = function()

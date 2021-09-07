@@ -133,11 +133,6 @@ nest.applyKeymaps {
         {'Up>',    '<Cmd>resize -5<CR>'},
         {'Right>', '<Cmd>vertical resize +5<CR>'},
 
-        -- -- 'numtostr/FTerm.nvim'
-        -- -- Floating terminal in vim
-        -- {'k>', '<Cmd>lua require"FTerm".toggle()<CR>'},
-        -- {'k>', '<Cmd>lua require"FTerm".toggle()<CR>', mode = 't'},
-
         -- romgrk/barbar.nvim
         {'s>', '<Cmd>BufferPick<CR>'},
     }},
