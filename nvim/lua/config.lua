@@ -30,21 +30,3 @@ vim.opt.inccommand = 'nosplit'
 
 -- Disables automatic commenting on newline
 vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
-
--- Load configuration files for plugins
-require('plugins/impatient')
-require('plugins/autopairs')
-require('plugins/barbar')
-require('plugins/colorizer')
-require('plugins/dashboard')
-require('plugins/git')
-require('plugins/icons')
-require('plugins/indent')
-require('plugins/lsp')
-require('plugins/lualine')
-require('plugins/neorg')
-require('plugins/nvimtree')
-require('plugins/registers')
-require('plugins/telescope')
-require('plugins/toggleterm')
-require('plugins/treesitter')
