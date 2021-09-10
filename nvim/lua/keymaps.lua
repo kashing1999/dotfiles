@@ -72,11 +72,16 @@ nest.applyKeymaps {
             {'r', '<Cmd>Telescope registers<CR>'},
         }},
 
-        -- f-person/git-blame.nvim
-        {'b', '<Cmd>GitBlameToggle<CR>'},
-
         -- lewis6991/gitsigns.nvim
+        -- f-person/git-blame.nvim
         {'g', {
+            {'b', '<Cmd>GitBlameToggle<CR>'},
+
+            {'d', '<Cmd>DiffviewOpen<CR>'},
+
+            {'g', '<Cmd>Neogit<CR>'},
+            {'g', '<Cmd>Neogit<CR>'},
+
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
             {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},
@@ -93,7 +98,7 @@ nest.applyKeymaps {
         {'c', '<Cmd>NvimTreeToggle<CR>'},
         {'C', 'NvimTreeFindFile<CR>'},
 
-        -- Switch tabs
+        -- tabs
         {'1', '1gt'},
         {'2', '2gt'},
         {'3', '3gt'},
@@ -104,6 +109,7 @@ nest.applyKeymaps {
         {'8', '8gt'},
         {'9', '9gt'},
         {'0', '<Cmd>tablast<CR>'},
+        {'x', '<Cmd>tabclose<CR>'},
 
         {'<Left>',  '<Cmd>BufferPrevious<CR>'},
         {'<Right>', '<Cmd>BufferNext<CR>'},
@@ -135,6 +141,11 @@ nest.applyKeymaps {
 
         -- romgrk/barbar.nvim
         {'s>', '<Cmd>BufferPick<CR>'},
+
+        -- phaazon/hop.nvim
+        -- Hops to a word
+        {'j>', '<Cmd>HopWord<CR>', mode='v'},
+        {'k>', '<Cmd>HopLine<CR>', mode='v'},
     }},
 
     { '<A-', {

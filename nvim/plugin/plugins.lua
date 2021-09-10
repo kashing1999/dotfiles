@@ -7,10 +7,11 @@ end
 
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
+    use 'lewis6991/impatient.nvim'
 
     -- Neovim
     use 'nvim-lua/plenary.nvim'
-    use {'lewis6991/impatient.nvim', rocks = 'mpack'}
+    -- use {'lewis6991/impatient.nvim', rocks = 'mpack'}
 
     -- Quality of life
     use 'tpope/vim-sensible'
@@ -30,6 +31,8 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     use 'f-person/git-blame.nvim'
     use 'lewis6991/gitsigns.nvim'
+    -- use 'TimUntersberger/neogit'
+    use 'sindrets/diffview.nvim'
 
     -- Color
     use 'rktjmp/lush.nvim'

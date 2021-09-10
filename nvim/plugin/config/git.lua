@@ -1,6 +1,7 @@
 local gitsigns = require('gitsigns')
+-- local neogit = require('neogit')
 
--- gitsigns conifg
+-- gitsigns config
 gitsigns.setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
@@ -40,7 +41,9 @@ gitsigns.setup {
     row = 0,
     col = 1
   },
-  use_internal_diff = true,  -- If vim.diff or luajit is present
+  diff_opts = {
+    internal = false
+  },
   yadm = {
     enable = false
   },
@@ -48,3 +51,35 @@ gitsigns.setup {
 
 -- blame line
     vim.g.gitblame_enabled = 0
+
+-- neogit
+-- neogit.setup {
+--   disable_signs = false,
+--   disable_context_highlighting = false,
+--   disable_commit_confirmation = false,
+--   auto_refresh = true,
+--   disable_builtin_notifications = false,
+--   commit_popup = {
+--       kind = "split",
+--   },
+--   -- customize displayed signs
+--   signs = {
+--     -- { CLOSED, OPENED }
+--     section = { ">", "v" },
+--     item = { ">", "v" },
+--     hunk = { "", "" },
+--   },
+--   integrations = {
+--     diffview = false
+--   },
+--   -- override/add mappings
+--   mappings = {
+--     -- modify status buffer mappings
+--     status = {
+--       -- Adds a mapping with "B" as key that does the "BranchPopup" command
+--       ["B"] = "BranchPopup",
+--       -- Removes the default mapping of "s"
+--       ["s"] = "",
+--     }
+--   }
+-- }
