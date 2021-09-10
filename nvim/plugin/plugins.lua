@@ -20,6 +20,7 @@ return require('packer').startup(function()
     use 'lukas-reineke/indent-blankline.nvim'
     use 'LionC/nest.nvim'
     use 'Vhyrro/neorg'
+    use 'beauwilliams/focus.nvim'
 
     -- Text editing
     use 'phaazon/hop.nvim'

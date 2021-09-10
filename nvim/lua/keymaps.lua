@@ -96,7 +96,7 @@ nest.applyKeymaps {
 
         -- kyazdani42/nvim-tree.lua
         {'c', '<Cmd>NvimTreeToggle<CR>'},
-        {'C', 'NvimTreeFindFile<CR>'},
+        {'C', '<Cmd>NvimTreeFindFile<CR>'},
 
         -- tabs
         {'1', '1gt'},
@@ -139,6 +139,12 @@ nest.applyKeymaps {
         {'Up>',    '<Cmd>resize -5<CR>'},
         {'Right>', '<Cmd>vertical resize +5<CR>'},
 
+        --Nvim tree focus
+        {'c>', '<Cmd>NvimTreeFocus<CR>'},
+
+        -- Split nicely
+        {'w>', '<Cmd>FocusSplitNicely<CR>'},
+
         -- romgrk/barbar.nvim
         {'s>', '<Cmd>BufferPick<CR>'},
 
@@ -166,7 +172,7 @@ nest.applyKeymaps {
         {'9>', '<Cmd>BufferGoto 9<CR>'},
         {'0>', '<Cmd>BufferLast<CR>'},
 
-        {'p>', '<Cmd>BufferPin<CR>'},
+       {'p>', '<Cmd>BufferPin<CR>'},
         {'c>', '<Cmd>BufferClose<CR>'},
     }},
 }
