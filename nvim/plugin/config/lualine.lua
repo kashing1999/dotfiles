@@ -4,13 +4,19 @@ lualine.setup {
   options = {
     icons_enabled = true,
     theme = 'gruvbox_material',
+    -- theme = 'everforest',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {},
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch'},
+    lualine_b = {'branch', {
+      'diff',
+      color_added = 'green',
+      color_modified = 'yellow',
+      color_removed = 'red'
+    }},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},

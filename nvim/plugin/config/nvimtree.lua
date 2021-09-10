@@ -1,6 +1,6 @@
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-vim.g.nvim_tree_side = 'left' --left by default
+vim.g.nvim_tree_side = 'right' --left by default
 vim.g.nvim_tree_width = 40 --30 by default, can be width_in_columns or 'width_in_percent%'
 vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_auto_close = 1 --0 by default, closes the tree when it's the last window

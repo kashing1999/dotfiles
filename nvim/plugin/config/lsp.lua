@@ -8,7 +8,7 @@ lsp.clangd.setup(coq.lsp_ensure_capabilities())
 
 local navigator = require('navigator')
 navigator.setup({
-  default_mapping = true,  -- set to false if you will remap every key
+  default_mapping = false,  -- set to false if you will remap every key
   treesitter_analysis = true, -- treesitter variable context
   transparency = 80, -- 0 ~ 100 blur the main window, 100: fully transparent, 0: opaque,  set to nil or 100 to disable it
   code_action_prompt = {enable = true, sign = true, sign_priority = 40, virtual_text = true},

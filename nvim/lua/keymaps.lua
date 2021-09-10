@@ -76,7 +76,7 @@ nest.applyKeymaps {
         {'b', '<Cmd>GitBlameToggle<CR>'},
 
         -- lewis6991/gitsigns.nvim
-        {'h', {
+        {'g', {
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
             {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},
@@ -90,7 +90,7 @@ nest.applyKeymaps {
         }};
 
         -- kyazdani42/nvim-tree.lua
-        {'c', '<Cmd> lua toggle()<CR>'},
+        {'c', '<Cmd>NvimTreeToggle<CR>'},
         {'C', 'NvimTreeFindFile<CR>'},
 
         -- Switch tabs
