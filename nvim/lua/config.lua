@@ -41,4 +41,19 @@ vim.cmd(
         autocmd WinEnter * set cul
         autocmd WinLeave * set nocul
     augroup END
+
+
+    hi ActiveWindow guibg=#1d2021
+    hi InactiveWindow guibg=#282828
+
+    " Call method on window enter
+    augroup WindowManagement
+      autocmd!
+      autocmd BufNewFile,BufRead,WinEnter * call Handle_Win_Enter()
+    augroup END
+
+    " Change highlight group of active/inactive windows
+    function! Handle_Win_Enter()
+      setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+    endfunction
 ]])

@@ -1,8 +1,17 @@
-vim.g.coq_settings = { auto_start = 'shut-up' }
-
 local coq = require('coq')
-
 local lsp = require('lspconfig')
+local remap = vim.api.nvim_set_keymap
+
+vim.g.coq_settings = {
+    auto_start = 'shut-up',
+    keymap = { recommended = false }
+}
+
+
+remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
+remap('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })
+remap('i', '<tab>', [[pumvisible() ? "<c-n>" : "<tab>"]], { expr = true, noremap = true })
+remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], { expr = true, noremap = true })
 
 lsp.pylsp.setup{
     coq.lsp_ensure_capabilities()

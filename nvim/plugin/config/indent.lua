@@ -13,7 +13,7 @@ indent.setup {
     -- show_current_context = true,
     char = '│',
     buftype_exclude = {'terminal'},
-    filetype_exclude = {'dashboard', 'NvimTree', 'packer', 'help', 'man'},
+    filetype_exclude = {'dashboard', 'NvimTree', 'packer', 'help', 'man', 'norg'},
     char_highlight_list = {
         'IndentBlanklineIndent1',
         'IndentBlanklineIndent2',
