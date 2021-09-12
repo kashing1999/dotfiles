@@ -29,15 +29,16 @@ vim.opt.splitright = true
 -- Live substitution
 vim.opt.inccommand = 'nosplit'
 
--- Disables automatic commenting on newline
-vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
+-- Lazy redraw to improve performance
+vim.opt.lazyredraw = true
 
--- vim.cmd(
--- [[
---     augroup BgHighlight
---         autocmd!
---         autocmd WinEnter * set cul
---         autocmd WinLeave * set nocul
---     augroup END
--- ]]
--- )
+vim.opt.cul = true
+
+vim.cmd(
+[[
+    augroup Cul
+        autocmd!
+        autocmd WinEnter * set cul
+        autocmd WinLeave * set nocul
+    augroup END
+]])

@@ -1,5 +1,9 @@
 local lualine = require('lualine')
 
+local vista = {}
+vista.sections = {lualine_a = {'filetype'}}
+vista.filetypes = {'vista'}
+
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -13,9 +17,9 @@ lualine.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', {
       'diff',
-      color_added = 'green',
-      color_modified = 'yellow',
-      color_removed = 'red'
+      color_added = '#98C379',
+      color_modified = '#E5C07B',
+      color_removed = '#E06C75'
     }},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
@@ -32,6 +36,6 @@ lualine.setup {
   },
   tabline = {},
 
-  extensions = {'nvim-tree'}
-}
+  extensions = {vista, 'nvim-tree'},
 
+}

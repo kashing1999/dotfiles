@@ -63,24 +63,27 @@ nest.applyKeymaps {
         -- Find files using Telescope command-line sugar.
         {'f', {
             {'f', '<Cmd>DashboardFindFile<CR>'},
-            {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
             {'g', '<Cmd>Telescope live_grep<CR>'},
             {'b', '<Cmd>Telescope buffers<CR>'},
             {'h', '<Cmd>Telescope help_tags<CR>'},
             {'m', '<Cmd>Telescope man_pages<CR>'},
             {'q', '<Cmd>Telescope quickfix<CR>'},
-            {'r', '<Cmd>Telescope registers<CR>'},
+            {'r', '<Cmd>Telescope lsp_references<CR>'},
+            {'d', '<Cmd>Telescope lsp_definitions<CR>'},
+            {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
+            {'a', '<Cmd>Telescope lsp_code_actions<CR>'},
+            {'c', '<Cmd>Telescope file_browser<CR>'},
         }},
 
         -- lewis6991/gitsigns.nvim
+        {'b', '<Cmd>GitBlameToggle<CR>'},
+
         -- f-person/git-blame.nvim
         {'g', {
-            {'b', '<Cmd>GitBlameToggle<CR>'},
 
             {'d', '<Cmd>DiffviewOpen<CR>'},
 
-            {'g', '<Cmd>Neogit<CR>'},
-            {'g', '<Cmd>Neogit<CR>'},
+            {'g', '<Cmd>Git<CR>'},
 
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
@@ -97,6 +100,9 @@ nest.applyKeymaps {
         -- kyazdani42/nvim-tree.lua
         {'c', '<Cmd>NvimTreeToggle<CR>'},
         {'C', '<Cmd>NvimTreeFindFile<CR>'},
+
+        -- liuchengxu/vista.vim
+        {'v', '<Cmd>Vista!!<CR>'},
 
         -- tabs
         {'1', '1gt'},
@@ -129,15 +135,16 @@ nest.applyKeymaps {
             {'a', '<Cmd>DashboardFindWord<CR>'},
             {'b', '<Cmd>DashboardJumpMark<CR>'},
             {'n', '<Cmd>DashboardNewFile<CR>'},
+            {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
         }},
     }},
 
     { '<C-', {
         -- Resize window
-        {'Left>',  '<Cmd>vertical resize -5<CR>'},
-        {'Down>',  '<Cmd>resize +5<CR>'},
-        {'Up>',    '<Cmd>resize -5<CR>'},
-        {'Right>', '<Cmd>vertical resize +5<CR>'},
+        {'Left>',  '<C-w>h'},
+        {'Down>',  '<C-w>j'},
+        {'Up>',    '<C-w>k'},
+        {'Right>', '<C-w>l'},
 
         --Nvim tree focus
         {'c>', '<Cmd>NvimTreeFocus<CR>'},
@@ -172,7 +179,13 @@ nest.applyKeymaps {
         {'9>', '<Cmd>BufferGoto 9<CR>'},
         {'0>', '<Cmd>BufferLast<CR>'},
 
-       {'p>', '<Cmd>BufferPin<CR>'},
+        {'p>', '<Cmd>BufferPin<CR>'},
         {'c>', '<Cmd>BufferClose<CR>'},
+
+        -- Resize window
+        {'Left>',  '<Cmd>vertical resize -5<CR>'},
+        {'Down>',  '<Cmd>resize +5<CR>'},
+        {'Up>',    '<Cmd>resize -5<CR>'},
+        {'Right>', '<Cmd>vertical resize +5<CR>'},
     }},
 }

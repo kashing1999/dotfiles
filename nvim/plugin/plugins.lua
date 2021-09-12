@@ -56,9 +56,9 @@ return require('packer').startup(function()
 
     -- Lsp and syntax
     use 'neovim/nvim-lspconfig'
+    use 'liuchengxu/vista.vim'
+    use 'kosayoda/nvim-lightbulb'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' }
-    use 'ray-x/navigator.lua'
     use { 'ms-jpq/coq_nvim', branch = 'coq' } -- main one
     use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
 end)

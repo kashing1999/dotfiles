@@ -8,7 +8,7 @@ vim.g.nvim_tree_follow = 1 --0 by default, this option allows the cursor to be u
 vim.g.nvim_tree_indent_markers = 0 --0 by default, this option shows indent markers when folders are open
 vim.g.nvim_tree_hide_dotfiles = 1 --0 by default, this option hides files and folders starting with a dot `.`
 vim.g.nvim_tree_git_hl = 0 --0 by default, will enable file highlight for git attributes (can be used without the icons).
-vim.g.nvim_tree_highlight_opened_files = 0 --0 by default, will enable folder and file icon highlight for opened files/directories.
+vim.g.nvim_tree_highlight_opened_files = 1 --0 by default, will enable folder and file icon highlight for opened files/directories.
 vim.g.nvim_tree_root_folder_modifier = ':~' --This is the default. See :help filename-modifiers for more options
 vim.g.nvim_tree_tab_open = 0 --0 by default, will open the tree when entering a new tab and the tree was previously open
 vim.g.nvim_tree_auto_resize = 1 --1 by default, will resize the tree to its saved width when opening a file
@@ -92,8 +92,8 @@ vim.g.nvim_tree_icons = {
 vim.g.nvim_tree_bindings = {
     { key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
     { key = {"<2-RightMouse>", "c"},        cb = tree_cb("cd") },
-    { key = "w",                            cb = tree_cb("vsplit") },
-    { key = "W",                            cb = tree_cb("split") },
+    { key = "v",                            cb = tree_cb("vsplit") },
+    { key = "V",                            cb = tree_cb("split") },
     { key = "t",                            cb = tree_cb("tabnew") },
     { key = "<",                            cb = tree_cb("prev_sibling") },
     { key = ">",                            cb = tree_cb("next_sibling") },

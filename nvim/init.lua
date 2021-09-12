@@ -9,4 +9,3 @@ require('impatient')
 
 -- load keymapping
 require('keymaps')
-
