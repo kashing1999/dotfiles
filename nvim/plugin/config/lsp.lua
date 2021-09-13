@@ -1,4 +1,3 @@
-local coq = require('coq')
 local lsp = require('lspconfig')
 local remap = vim.api.nvim_set_keymap
 
@@ -7,6 +6,7 @@ vim.g.coq_settings = {
     keymap = { recommended = false }
 }
 
+local coq = require('coq')
 
 remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
 remap('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })
