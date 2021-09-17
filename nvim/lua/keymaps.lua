@@ -54,33 +54,12 @@ nest.applyKeymaps {
         -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
 
-        -- phaazon/hop.nvim
-        -- Hops to a word
-        {'.', '<Cmd>HopWord<CR>'},
-        {',', '<Cmd>HopLine<CR>'},
-
-        -- nvim-telescope/telescope.nvim
-        -- Find files using Telescope command-line sugar.
-        {'f', {
-            {'f', '<Cmd>DashboardFindFile<CR>'},
-            {'g', '<Cmd>Telescope live_grep<CR>'},
-            {'b', '<Cmd>Telescope buffers<CR>'},
-            {'h', '<Cmd>Telescope help_tags<CR>'},
-            {'m', '<Cmd>Telescope man_pages<CR>'},
-            {'q', '<Cmd>Telescope quickfix<CR>'},
-            {'r', '<Cmd>Telescope lsp_references<CR>'},
-            {'d', '<Cmd>Telescope lsp_definitions<CR>'},
-            {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
-            {'a', '<Cmd>Telescope lsp_code_actions<CR>'},
-            {'c', '<Cmd>Telescope file_browser<CR>'},
-        }},
 
         -- lewis6991/gitsigns.nvim
         {'b', '<Cmd>GitBlameToggle<CR>'},
 
         -- f-person/git-blame.nvim
         {'g', {
-
             {'d', '<Cmd>DiffviewOpen<CR>'},
 
             {'g', '<Cmd>Git<CR>'},
@@ -137,6 +116,27 @@ nest.applyKeymaps {
             {'n', '<Cmd>DashboardNewFile<CR>'},
             {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
         }},
+
+        -- phaazon/hop.nvim
+        -- Hops to a word
+        {'.', '<Cmd>HopWord<CR>'},
+        {',', '<Cmd>HopLine<CR>'},
+    }},
+
+    -- nvim-telescope/telescope.nvim
+    -- Find files using Telescope command-line sugar.
+    { '<esc>', {
+        {'f', '<Cmd>DashboardFindFile<CR>'},
+        {'g', '<Cmd>Telescope live_grep<CR>'},
+        {'b', '<Cmd>Telescope buffers<CR>'},
+        {'h', '<Cmd>Telescope help_tags<CR>'},
+        {'m', '<Cmd>Telescope man_pages<CR>'},
+        {'q', '<Cmd>Telescope quickfix<CR>'},
+        {'r', '<Cmd>Telescope lsp_references<CR>'},
+        {'d', '<Cmd>Telescope lsp_definitions<CR>'},
+        {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
+        {'a', '<Cmd>Telescope lsp_code_actions<CR>'},
+        {'c', '<Cmd>Telescope file_browser<CR>'},
     }},
 
     { '<C-', {

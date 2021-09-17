@@ -17,9 +17,9 @@ lualine.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', {
       'diff',
-      color_added = '#98C379',
+      color_added    = '#98C379',
       color_modified = '#E5C07B',
-      color_removed = '#E06C75'
+      color_removed  = '#E06C75',
     }},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
