@@ -4,11 +4,12 @@ local vista = {}
 vista.sections = {lualine_a = {'filetype'}}
 vista.filetypes = {'vista'}
 
-lualine.setup {
+lualine.setup{
   options = {
     icons_enabled = true,
-    theme = 'gruvbox_material',
-    -- theme = 'everforest',
+    theme = 'everforest',
+    -- theme = 'gruvbox_material',
+    -- theme = 'github',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {},

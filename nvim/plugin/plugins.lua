@@ -40,6 +40,7 @@ return require('packer').startup(function()
     use 'sainnhe/gruvbox-material'
     use 'sainnhe/everforest'
     use 'norcalli/nvim-colorizer.lua'
+    use 'projekt0n/github-nvim-theme'
 
     -- Ui elements:
     use 'romgrk/barbar.nvim'

@@ -17,10 +17,12 @@ vim.opt.expandtab = true
 -- Colorscheme
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
-vim.g.gruvbox_material_disable_italic_comment = true
-vim.cmd('colorscheme gruvbox-material')
--- vim.g.everforest_disable_italic_comment = true
--- vim.cmd('colorscheme everforest')
+-- vim.g.gruvbox_material_disable_italic_comment = true
+-- vim.cmd('colorscheme gruvbox-material')
+
+vim.g.everforest_background = 'hard'
+vim.g.everforest_disable_italic_comment = true
+vim.cmd('colorscheme everforest')
 
 -- Splits open at the bottom and right
 vim.opt.splitbelow = true
