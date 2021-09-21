@@ -31,6 +31,7 @@ return require('packer').startup(function()
 
     -- Git
     use 'tpope/vim-fugitive'
+    use 'TimUntersberger/neogit'
     use 'f-person/git-blame.nvim'
     use 'lewis6991/gitsigns.nvim'
     -- use 'TimUntersberger/neogit'
