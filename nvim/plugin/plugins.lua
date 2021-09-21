@@ -24,17 +24,15 @@ return require('packer').startup(function()
     use 'folke/todo-comments.nvim'
 
     -- Text editing
-    use 'phaazon/hop.nvim'
+    use '/IndianBoy42/hop.nvim'
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
     use 'windwp/nvim-autopairs'
 
     -- Git
-    use 'tpope/vim-fugitive'
     use 'TimUntersberger/neogit'
     use 'f-person/git-blame.nvim'
     use 'lewis6991/gitsigns.nvim'
-    -- use 'TimUntersberger/neogit'
     use 'sindrets/diffview.nvim'
 
     -- Color

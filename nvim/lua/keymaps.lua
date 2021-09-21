@@ -98,13 +98,6 @@ nest.applyKeymaps {
         {'<Left>',  '<Cmd>BufferPrevious<CR>'},
         {'<Right>', '<Cmd>BufferNext<CR>'},
 
-        {'b', {
-            {'b', '<Cmd>BufferOrderByBufferNumber<CR>'},
-            {'d', '<Cmd>BufferOrderByDirectory<CR>'},
-            {'l', '<Cmd>BufferOrderByLanguage<CR>'},
-            {'w', '<Cmd>BufferOrderByWindowNumber<CR>'},
-        }},
-
         -- glepnir/dashboard-nvim
         {'p', {
             {'s', '<Cmd>SessionSave<CR>'},
@@ -118,6 +111,12 @@ nest.applyKeymaps {
 
         -- phaazon/hop.nvim
         -- Hops to a word
+        {'h', {
+            {'d', '<Cmd>HopDefinitions<CR>'},
+            {'r', '<Cmd>HopReferences<CR>'},
+            {'r', '<Cmd>HopFunctions<CR>'},
+        }},
+
         {'.', '<Cmd>HopWord<CR>'},
         {',', '<Cmd>HopLine<CR>'},
     }},
@@ -188,6 +187,10 @@ nest.applyKeymaps {
 
         {'p>', '<Cmd>BufferPin<CR>'},
         {'c>', '<Cmd>BufferClose<CR>'},
+        {'b>', '<Cmd>BufferOrderByBufferNumber<CR>'},
+        {'d>', '<Cmd>BufferOrderByDirectory<CR>'},
+        {'l>', '<Cmd>BufferOrderByLanguage<CR>'},
+        {'w>', '<Cmd>BufferOrderByWindowNumber<CR>'},
 
         -- Resize window
         {'Left>',  '<Cmd>vertical resize -5<CR>'},
