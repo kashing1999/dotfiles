@@ -62,7 +62,7 @@ nest.applyKeymaps {
         {'g', {
             {'d', '<Cmd>DiffviewOpen<CR>'},
 
-            {'g', '<Cmd>Git<CR>'},
+            {'g', '<Cmd>Neogit<CR>'},
 
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
@@ -94,7 +94,6 @@ nest.applyKeymaps {
         {'8', '8gt'},
         {'9', '9gt'},
         {'0', '<Cmd>tablast<CR>'},
-        {'x', '<Cmd>tabclose<CR>'},
 
         {'<Left>',  '<Cmd>BufferPrevious<CR>'},
         {'<Right>', '<Cmd>BufferNext<CR>'},
@@ -129,14 +128,18 @@ nest.applyKeymaps {
         {'f', '<Cmd>DashboardFindFile<CR>'},
         {'g', '<Cmd>Telescope live_grep<CR>'},
         {'b', '<Cmd>Telescope buffers<CR>'},
+
         {'h', '<Cmd>Telescope help_tags<CR>'},
         {'m', '<Cmd>Telescope man_pages<CR>'},
+
         {'q', '<Cmd>Telescope quickfix<CR>'},
         {'r', '<Cmd>Telescope lsp_references<CR>'},
         {'d', '<Cmd>Telescope lsp_definitions<CR>'},
         {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
         {'a', '<Cmd>Telescope lsp_code_actions<CR>'},
+
         {'c', '<Cmd>Telescope file_browser<CR>'},
+        {'t', '<Cmd>Telescope treesitter<CR>'},
     }},
 
     { '<C-', {
@@ -150,7 +153,8 @@ nest.applyKeymaps {
         {'c>', '<Cmd>NvimTreeFocus<CR>'},
 
         -- Split nicely
-        {'w>', '<Cmd>FocusSplitNicely<CR>'},
+        -- {'w>', '<Cmd>FocusSplitNicely<CR>'},
+        {'w>', '<Cmd>vsplit<CR>'},
 
         -- romgrk/barbar.nvim
         {'s>', '<Cmd>BufferPick<CR>'},
@@ -159,6 +163,9 @@ nest.applyKeymaps {
         -- Hops to a word
         {'j>', '<Cmd>HopWord<CR>', mode='v'},
         {'k>', '<Cmd>HopLine<CR>', mode='v'},
+
+        -- Close tab
+        {'x>', '<Cmd>tabclose<CR>'},
     }},
 
     { '<A-', {
