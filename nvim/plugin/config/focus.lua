@@ -1,4 +1,6 @@
-local focus = require('focus')
-focus.setup()
+-- local focus = require('focus')
+-- focus.setup({
+--     compatible_filetrees = {"nvimtree"}
+-- })
 
-focus.treewidth = 40
+-- focus.treewidth = 40

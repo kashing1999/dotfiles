@@ -38,8 +38,8 @@ nest.applyKeymaps {
         {'q', '<Cmd>q<CR>'},
         {'w', '<Cmd>w!<CR>'},
 
-        -- Reload nvim config
-        {'sv', '<Cmd>source $MYVIMRC<CR>', options = { silent = false }},
+        -- Sidebar
+        {'s', '<Cmd>SidebarNvimToggle<CR>'},
 
         -- Copy a line to clipboard
         {'y', '"+yy'},

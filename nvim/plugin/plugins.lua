@@ -21,6 +21,7 @@ return require('packer').startup(function()
     use 'LionC/nest.nvim'
     use 'Vhyrro/neorg'
     use 'beauwilliams/focus.nvim'
+    use 'folke/todo-comments.nvim'
 
     -- Text editing
     use 'phaazon/hop.nvim'
@@ -50,6 +51,7 @@ return require('packer').startup(function()
     use 'hoob3rt/lualine.nvim'
     use 'akinsho/toggleterm.nvim'
     use 'glepnir/dashboard-nvim'
+    use 'GustavoKatel/sidebar.nvim'
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'

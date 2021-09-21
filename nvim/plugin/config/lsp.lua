@@ -31,7 +31,7 @@ lsp.gopls.setup {
         staticcheck = true,
       },
     },
-    -- coq.lsp_ensure_capabilities()
+    coq.lsp_ensure_capabilities()
   }
 
 vim.cmd(
