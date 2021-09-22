@@ -34,8 +34,8 @@ vim.opt.inccommand = 'nosplit'
 -- Lazy redraw to improve performance
 vim.opt.lazyredraw = true
 
+-- Highlight current cursor in buffer
 vim.opt.cul = true
-
 vim.cmd(
 [[
     augroup Cul
@@ -45,6 +45,7 @@ vim.cmd(
     augroup END
 ]])
 
+-- Disable unused builtins
 local disabled_built_ins = {
     "netrw",
     "netrwPlugin",
@@ -65,7 +66,25 @@ local disabled_built_ins = {
     "spellfile_plugin",
     "matchit"
 }
-
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
+
+-- Workaround to Neogit crashing
+if pcall(require, 'plenary') then
+    RELOAD = require('plenary.reload').reload_module
+
+    R = function(name)
+      RELOAD(name)
+      return require(name)
+    end
+end
+
+-- Fold settings
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldtext =
+    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+vim.wo.fillchars = "fold:\\"
+vim.wo.foldnestmax = 3
+vim.wo.foldminlines = 1
