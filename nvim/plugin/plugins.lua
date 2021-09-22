@@ -18,10 +18,12 @@ return require('packer').startup(function()
     use 'jremmen/vim-ripgrep'
     use 'szw/vim-maximizer'
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'p00f/nvim-ts-rainbow'
     use 'LionC/nest.nvim'
     use 'Vhyrro/neorg'
     use 'beauwilliams/focus.nvim'
     use 'folke/todo-comments.nvim'
+    use 'kwkarlwang/bufresize.nvim'
 
     -- Text editing
     use '/IndianBoy42/hop.nvim'

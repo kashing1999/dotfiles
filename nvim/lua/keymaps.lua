@@ -165,6 +165,7 @@ nest.applyKeymaps {
 
         -- Close tab
         {'x>', '<Cmd>tabclose<CR>'},
+        {'a>', 'za'},
     }},
 
     { '<A-', {
