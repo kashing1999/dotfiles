@@ -32,7 +32,7 @@ return require('packer').startup(function()
     use 'ggandor/lightspeed.nvim'
 
     -- Git
-    use 'TimUntersberger/neogit'
+    use 'tpope/vim-fugitive'
     use 'f-person/git-blame.nvim'
     use 'lewis6991/gitsigns.nvim'
     use 'sindrets/diffview.nvim'

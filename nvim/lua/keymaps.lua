@@ -19,8 +19,13 @@ nest.applyKeymaps {
     -- Don't put stuff deleted from c into buffer
     {'c', '"_c'},
 
-    {'<PageUp>',   '<C-u>'},
-    {'<PageDown>', '<C-d>'},
+    -- Center line on insert mode
+    {'c', '"_c'},
+
+    {'i', 'zzi'},
+    {'I', 'zzI'},
+    {'a', 'zza'},
+    {'A', 'zzA'},
 
     -- nvim-hlslens
     {'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>"},
@@ -67,7 +72,7 @@ nest.applyKeymaps {
         {'g', {
             {'d', '<Cmd>DiffviewOpen<CR>'},
 
-            {'g', '<Cmd>Neogit<CR>'},
+            {'g', '<Cmd>Git<CR>'},
 
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
