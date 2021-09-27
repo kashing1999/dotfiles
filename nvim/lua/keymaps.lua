@@ -16,17 +16,22 @@ nest.applyKeymaps {
     -- Remap ; into :
     {';', ':', options = { noremap = true, silent = false }},
 
-    -- Stop search highlight
-    {'<esc><esc>', '<Cmd>nohl<CR>'},
-
     -- Don't put stuff deleted from c into buffer
     {'c', '"_c'},
 
-    -- Replace all is aliased to S.
-    {'S', ':%s//g<Left><Left>', options = { silent = false }},
-
     {'<PageUp>',   '<C-u>'},
     {'<PageDown>', '<C-d>'},
+
+    -- nvim-hlslens
+    {'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>"},
+    {'N', "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>"},
+    {'*', "*<Cmd>lua require('hlslens').start()<CR>"},
+    {'#', "#<Cmd>lua require('hlslens').start()<CR>"},
+    {'g*', "g*<Cmd>lua require('hlslens').start()<CR>"},
+    {'g#', "g#<Cmd>lua require('hlslens').start()<CR>"},
+
+    -- Stop search highlight
+    {'<esc><esc>', ':noh<CR>'},
 
     -- szw/vim-maximizer
     -- Use ripgrep to search for files
@@ -109,16 +114,6 @@ nest.applyKeymaps {
             {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
         }},
 
-        -- phaazon/hop.nvim
-        -- Hops to a word
-        {'h', {
-            {'d', '<Cmd>HopDefinitions<CR>'},
-            {'r', '<Cmd>HopReferences<CR>'},
-            {'r', '<Cmd>HopFunctions<CR>'},
-        }},
-
-        {'.', '<Cmd>HopWord<CR>'},
-        {',', '<Cmd>HopLine<CR>'},
     }},
 
     -- nvim-telescope/telescope.nvim
@@ -155,17 +150,15 @@ nest.applyKeymaps {
         -- {'w>', '<Cmd>FocusSplitNicely<CR>'},
         {'w>', '<Cmd>vsplit<CR>'},
 
-        -- romgrk/barbar.nvim
-        {'s>', '<Cmd>BufferPick<CR>'},
-
-        -- phaazon/hop.nvim
-        -- Hops to a word
-        {'j>', '<Cmd>HopWord<CR>', mode='v'},
-        {'k>', '<Cmd>HopLine<CR>', mode='v'},
-
         -- Close tab
         {'x>', '<Cmd>tabclose<CR>'},
+
+        -- Fold
         {'a>', 'za'},
+        {'z>', 'zR'},
+        -- Replace all is aliased to S.
+        {'s>', ':%s//g<Left><Left>', options = { silent = false }},
+
     }},
 
     { '<A-', {
@@ -192,6 +185,8 @@ nest.applyKeymaps {
         {'d>', '<Cmd>BufferOrderByDirectory<CR>'},
         {'l>', '<Cmd>BufferOrderByLanguage<CR>'},
         {'w>', '<Cmd>BufferOrderByWindowNumber<CR>'},
+        {'s>', '<Cmd>BufferPick<CR>'},
+
 
         -- Resize window
         {'Left>',  '<Cmd>vertical resize -5<CR>'},

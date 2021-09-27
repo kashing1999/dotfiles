@@ -26,10 +26,10 @@ return require('packer').startup(function()
     use 'kwkarlwang/bufresize.nvim'
 
     -- Text editing
-    use '/IndianBoy42/hop.nvim'
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
     use 'windwp/nvim-autopairs'
+    use 'ggandor/lightspeed.nvim'
 
     -- Git
     use 'TimUntersberger/neogit'
@@ -38,13 +38,13 @@ return require('packer').startup(function()
     use 'sindrets/diffview.nvim'
 
     -- Color
-    use 'rktjmp/lush.nvim'
     use 'sainnhe/gruvbox-material'
     use 'sainnhe/everforest'
     use 'norcalli/nvim-colorizer.lua'
     use 'projekt0n/github-nvim-theme'
 
     -- Ui elements:
+    use 'kevinhwang91/nvim-hlslens'
     use 'romgrk/barbar.nvim'
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'

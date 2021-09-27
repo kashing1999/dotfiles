@@ -123,28 +123,3 @@ vim.g.nvim_tree_bindings = {
     { key = "q",                            cb = tree_cb("close") },
     { key = "g?",                           cb = tree_cb("toggle_help") },
 }
-
-toggle = function()
-    local open = function()
-      require'nvim-tree'.find_file(true)
-      require'bufferline.state'.set_offset(43, ' Nvim Tree')
-    end
-
-    local close = function()
-      require'nvim-tree'.close()
-      require'bufferline.state'.set_offset(0)
-    end
-
-    local view = require 'nvim-tree.view'
-    local lib = require 'nvim-tree.lib'
-
-    if view.win_open() then
-      close()
-    else
-      if vim.g.nvim_tree_follow == 1 then
-        open()
-      else
-        lib.open()
-      end
-    end
-end

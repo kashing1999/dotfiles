@@ -1,5 +1,4 @@
 local gitsigns = require('gitsigns')
--- local neogit = require('neogit')
 
 -- gitsigns config
 gitsigns.setup {
@@ -14,10 +13,6 @@ gitsigns.setup {
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  watch_index = {
-    interval = 1000,
-    follow_files = true
-  },
   attach_to_untracked = true,
   current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
@@ -51,35 +46,3 @@ gitsigns.setup {
 
 -- blame line
     vim.g.gitblame_enabled = 0
-
--- neogit
--- neogit.setup {
---   disable_signs = false,
---   disable_context_highlighting = false,
---   disable_commit_confirmation = false,
---   auto_refresh = true,
---   disable_builtin_notifications = false,
---   commit_popup = {
---       kind = "split",
---   },
---   -- customize displayed signs
---   signs = {
---     -- { CLOSED, OPENED }
---     section = { ">", "v" },
---     item = { ">", "v" },
---     hunk = { "", "" },
---   },
---   integrations = {
---     diffview = false
---   },
---   -- override/add mappings
---   mappings = {
---     -- modify status buffer mappings
---     status = {
---       -- Adds a mapping with "B" as key that does the "BranchPopup" command
---       ["B"] = "BranchPopup",
---       -- Removes the default mapping of "s"
---       ["s"] = "",
---     }
---   }
--- }
