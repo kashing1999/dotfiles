@@ -74,6 +74,8 @@ nest.applyKeymaps {
 
             {'g', '<Cmd>Git<CR>'},
 
+            {'c', '<Cmd>GCheckout<CR>'},
+
             {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
             {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
             {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},
@@ -152,8 +154,8 @@ nest.applyKeymaps {
         {'c>', '<Cmd>NvimTreeFocus<CR>'},
 
         -- Split nicely
-        -- {'w>', '<Cmd>FocusSplitNicely<CR>'},
-        {'w>', '<Cmd>vsplit<CR>'},
+        {'w>', '<Cmd>FocusSplitNicely<CR>'},
+        -- {'w>', '<Cmd>vsplit<CR>'},
 
         -- Close tab
         {'x>', '<Cmd>tabclose<CR>'},

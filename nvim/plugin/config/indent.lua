@@ -9,6 +9,13 @@ vim.cmd [[
 
 local indent = require('indent_blankline')
 
+vim.opt.list = true
+
+vim.opt.listchars = {
+    space = "⋅",
+    eol = "↴",
+}
+
 indent.setup {
     -- show_current_context = true,
     char = '│',

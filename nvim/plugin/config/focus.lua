@@ -1,6 +1,6 @@
--- local focus = require('focus')
--- focus.setup({
---     compatible_filetrees = {"nvimtree"}
--- })
-
--- focus.treewidth = 40
+local focus = require('focus')
+focus.setup({
+    excluded_filetypes = {"toggleterm", "nvimtree", "dashboard"},
+    -- hybridnumber = true,
+    treewidth = 40
+})
