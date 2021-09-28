@@ -34,6 +34,9 @@ vim.opt.inccommand = 'nosplit'
 -- Lazy redraw to improve performance
 vim.opt.lazyredraw = true
 
+-- Scroll offset
+vim.opt.so = 15
+
 -- Highlight current cursor in buffer
 vim.opt.cul = true
 vim.cmd(
@@ -68,16 +71,6 @@ local disabled_built_ins = {
 }
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
-end
-
--- Workaround to Neogit crashing
-if pcall(require, 'plenary') then
-    RELOAD = require('plenary.reload').reload_module
-
-    R = function(name)
-      RELOAD(name)
-      return require(name)
-    end
 end
 
 -- Fold settings
