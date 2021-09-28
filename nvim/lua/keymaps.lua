@@ -74,17 +74,20 @@ nest.applyKeymaps {
 
             {'g', '<Cmd>Git<CR>'},
 
-            {'c', '<Cmd>GCheckout<CR>'},
+            {'c', '<Cmd>Telescope git_bcommits<CR>'},
+            {'C', '<Cmd>Telescope git_commits<CR>'},
+            {'b', '<Cmd>Telescope git_branches<CR>'},
+            {'s', '<Cmd>Telescope git_status<CR>'},
 
-            {'s', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
-            {'s', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
+            {'h', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
+            {'h', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
             {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},
             {'r', '<Cmd>lua require"gitsigns".reset_hunk()<CR>'},
             {'r', '<Cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
             {'R', '<Cmd>lua require"gitsigns".reset_buffer()<CR>'},
             {'p', '<Cmd>lua require"gitsigns".preview_hunk()<CR>'},
-            {'b', '<Cmd>lua require"gitsigns".blame_line(true)<CR>'},
-            {'S', '<Cmd>lua require"gitsigns".stage_buffer()<CR>'},
+            {'B', '<Cmd>lua require"gitsigns".blame_line(true)<CR>'},
+            {'H', '<Cmd>lua require"gitsigns".stage_buffer()<CR>'},
             {'U', '<Cmd>lua require"gitsigns".reset_buffer_index()<CR>'},
         }};
 

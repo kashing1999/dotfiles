@@ -24,8 +24,6 @@ return require('packer').startup(function()
     use 'beauwilliams/focus.nvim'
     use 'folke/todo-comments.nvim'
     use 'kwkarlwang/bufresize.nvim'
-    use 'junegunn/fzf.vim'
-    use 'stsewd/fzf-checkout.vim'
 
     -- Text editing
     use 'tpope/vim-surround'

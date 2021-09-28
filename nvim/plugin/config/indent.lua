@@ -29,4 +29,6 @@ indent.setup {
         'IndentBlanklineIndent5',
         'IndentBlanklineIndent6',
     },
+    show_trailing_blankline_indent = false,
+
 }
