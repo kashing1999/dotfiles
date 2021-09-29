@@ -47,11 +47,11 @@ vim.opt.listchars = {
 
 -- Highlight current cursor in buffer
 vim.opt.cul = true
+vim.opt.colorcolumn = '99999'
 vim.opt.cursorcolumn = true
 vim.cmd(
 [[
     augroup Cul
-        highlight CursorColumn guibg=#505050 guifg=fg
         autocmd!
         autocmd WinEnter * set cul
         autocmd WinEnter * set cursorcolumn
@@ -88,8 +88,9 @@ end
 -- Fold settings
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.wo.foldtext =
-    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+vim.o.foldtext = [[
+    substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
+]]
 vim.wo.fillchars = "fold: "
 vim.wo.foldnestmax = 3
 vim.wo.foldminlines = 1

@@ -20,16 +20,17 @@ nest.applyKeymaps {
     {'c', '"_c'},
 
     -- Center line on insert mode
-    {'c', '"_c'},
-
     {'i', 'zzi'},
     {'I', 'zzI'},
     {'a', 'zza'},
     {'A', 'zzA'},
 
+    -- Y yanks to end of line instead of whole line
+    {'Y', 'y$'},
+
     -- nvim-hlslens
-    {'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>"},
-    {'N', "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>"},
+    {'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>zzzv"},
+    {'N', "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>zzzv"},
     {'*', "*<Cmd>lua require('hlslens').start()<CR>"},
     {'#', "#<Cmd>lua require('hlslens').start()<CR>"},
     {'g*', "g*<Cmd>lua require('hlslens').start()<CR>"},
@@ -170,6 +171,7 @@ nest.applyKeymaps {
         -- Fold
         {'a>', 'za'},
         {'z>', 'zR'},
+        {'m>', 'zM'},
         -- Replace all is aliased to S.
         {'s>', ':%s//g<Left><Left>', options = { silent = false }},
 
@@ -207,5 +209,15 @@ nest.applyKeymaps {
         {'Down>',  '<Cmd>resize +5<CR>'},
         {'Up>',    '<Cmd>resize -5<CR>'},
         {'Right>', '<Cmd>vertical resize +5<CR>'},
+    }},
+
+    { mode = 'i', {
+        {',', ',<c-g>u'},
+        {'.', '.<c-g>u'},
+        {'!', '!<c-g>u'},
+        {'?', '?<c-g>u'},
+        {'(', '(<c-g>u'},
+        {'{', '{<c-g>u'},
+        {'[', '[<c-g>u'},
     }},
 }

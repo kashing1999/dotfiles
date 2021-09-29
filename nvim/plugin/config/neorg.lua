@@ -32,7 +32,7 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 			{ "<leader>od", "core.norg.qol.todo_items.todo.task_done" },
 			{ "<leader>ou", "core.norg.qol.todo_items.todo.task_undone" },
 			{ "<leader>op", "core.norg.qol.todo_items.todo.task_pending" },
-			{ "<C-o>", "core.norg.qol.todo_items.todo.task_cycle" }
+			{ "<leader>o", "core.norg.qol.todo_items.todo.task_cycle" }
 
 		},
 	}, { silent = true, noremap = true })
