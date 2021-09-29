@@ -64,9 +64,13 @@ nest.applyKeymaps {
         -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
 
-
         -- lewis6991/gitsigns.nvim
         {'b', '<Cmd>GitBlameToggle<CR>'},
+
+        {'l', {
+            {'l', '<Cmd>set list<CR>'},
+            {'n', '<Cmd>set nolist<CR>'},
+        }};
 
         -- f-person/git-blame.nvim
         {'g', {

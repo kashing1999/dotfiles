@@ -37,14 +37,26 @@ vim.opt.lazyredraw = true
 -- Scroll offset
 vim.opt.so = 15
 
+-- Show blank characters
+vim.opt.list = true
+
+vim.opt.listchars = {
+    space = "⋅",
+    eol = "↴",
+}
+
 -- Highlight current cursor in buffer
 vim.opt.cul = true
+vim.opt.cursorcolumn = true
 vim.cmd(
 [[
     augroup Cul
+        highlight CursorColumn guibg=#505050 guifg=fg
         autocmd!
         autocmd WinEnter * set cul
+        autocmd WinEnter * set cursorcolumn
         autocmd WinLeave * set nocul
+        autocmd WinLeave * set nocursorcolumn
     augroup END
 ]])
 
