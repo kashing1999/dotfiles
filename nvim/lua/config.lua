@@ -38,7 +38,7 @@ vim.opt.lazyredraw = true
 vim.opt.so = 15
 
 -- Show blank characters
-vim.opt.list = true
+vim.opt.list = false
 
 vim.opt.listchars = {
     space = "⋅",

@@ -41,7 +41,14 @@ telescope.setup{
 
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-    }
+    },
+
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    },
 }
 
 telescope.load_extension('fzy_native')

@@ -55,12 +55,6 @@ nest.applyKeymaps {
         -- Copy a line to clipboard
         {'y', '"+yy'},
 
-        -- Switch between buffers on screen
-        {'d', '<C-w>h'},
-        {'h', '<C-w>j'},
-        {'t', '<C-w>k'},
-        {'n', '<C-w>l'},
-
         -- Plug 'jremmen/vim-ripgrep'
         -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
