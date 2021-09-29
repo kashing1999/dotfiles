@@ -39,12 +39,16 @@ vim.opt.so = 15
 
 -- Highlight current cursor in buffer
 vim.opt.cul = true
+vim.opt.cursorcolumn = true
 vim.cmd(
 [[
     augroup Cul
+        highlight CursorColumn guibg=#505050 guifg=fg
         autocmd!
         autocmd WinEnter * set cul
+        autocmd WinEnter * set cursorcolumn
         autocmd WinLeave * set nocul
+        autocmd WinLeave * set nocursorcolumn
     augroup END
 ]])
 
