@@ -166,9 +166,13 @@ nest.applyKeymaps {
         {'a>', 'za'},
         {'z>', 'zR'},
         {'m>', 'zM'},
+
         -- Replace all is aliased to S.
         {'s>', ':%s//g<Left><Left>', options = { silent = false }},
 
+        -- Moving text
+        {'j>', ':m .+1<CR>=='},
+        {'k>', ':m .-2<CR>=='},
     }},
 
     { '<A-', {
@@ -213,5 +217,10 @@ nest.applyKeymaps {
         {'(', '(<c-g>u'},
         {'{', '{<c-g>u'},
         {'[', '[<c-g>u'},
+    }},
+
+    { mode = 'v', {
+        {'<C-j>', ":m '>+1<CR>gv=gv"},
+        {'<C-k>', ":m '<-2<CR>gv=gv"},
     }},
 }
