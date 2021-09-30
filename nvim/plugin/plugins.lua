@@ -5,13 +5,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd 'packadd packer.nvim'
 end
 
-return require('packer').startup(function()
+return require('packer').startup({function()
     use 'wbthomason/packer.nvim'
     use 'lewis6991/impatient.nvim'
 
     -- Neovim
     use 'nvim-lua/plenary.nvim'
-    -- use {'lewis6991/impatient.nvim', rocks = 'mpack'}
 
     -- Quality of life
     use 'tpope/vim-sensible'
@@ -22,8 +21,8 @@ return require('packer').startup(function()
     use 'LionC/nest.nvim'
     use 'Vhyrro/neorg'
     use 'beauwilliams/focus.nvim'
-    use 'folke/todo-comments.nvim'
     use 'kwkarlwang/bufresize.nvim'
+    use 'kevinhwang91/nvim-bqf'
 
     -- Text editing
     use 'tpope/vim-surround'
@@ -52,7 +51,6 @@ return require('packer').startup(function()
     use 'hoob3rt/lualine.nvim'
     use 'akinsho/toggleterm.nvim'
     use 'glepnir/dashboard-nvim'
-    use 'GustavoKatel/sidebar.nvim'
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
@@ -60,9 +58,12 @@ return require('packer').startup(function()
 
     -- Lsp and syntax
     use 'neovim/nvim-lspconfig'
-    use 'liuchengxu/vista.vim'
     use 'kosayoda/nvim-lightbulb'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'ms-jpq/coq_nvim', branch = 'coq' } -- main one
     use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
-end)
+end,
+config = {
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+}})

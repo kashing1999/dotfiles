@@ -121,6 +121,7 @@ nest.applyKeymaps {
             {'b', '<Cmd>DashboardJumpMark<CR>'},
             {'n', '<Cmd>DashboardNewFile<CR>'},
             {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
+            {'f', '<Cmd>DashboardFindFile<CR>'},
         }},
 
     }},
@@ -128,7 +129,7 @@ nest.applyKeymaps {
     -- nvim-telescope/telescope.nvim
     -- Find files using Telescope command-line sugar.
     { '<esc>', {
-        {'f', '<Cmd>DashboardFindFile<CR>'},
+        {'f', '<Cmd>Telescope find_files<CR>'},
         {'g', '<Cmd>Telescope live_grep<CR>'},
         {'b', '<Cmd>Telescope buffers<CR>'},
 
@@ -164,8 +165,6 @@ nest.applyKeymaps {
 
         -- Fold
         {'a>', 'za'},
-        {'z>', 'zR'},
-        {'m>', 'zM'},
 
         -- Replace all is aliased to S.
         {'s>', ':%s//g<Left><Left>', options = { silent = false }},
@@ -198,7 +197,7 @@ nest.applyKeymaps {
         {'b>', '<Cmd>BufferOrderByBufferNumber<CR>'},
         {'d>', '<Cmd>BufferOrderByDirectory<CR>'},
         {'l>', '<Cmd>BufferOrderByLanguage<CR>'},
-        {'w>', '<Cmd>BufferOrderByWindowNumber<CR>'},
+        {'n>', '<Cmd>BufferOrderByWindowNumber<CR>'},
         {'s>', '<Cmd>BufferPick<CR>'},
 
 
@@ -220,6 +219,7 @@ nest.applyKeymaps {
     }},
 
     { mode = 'v', {
+        {'<C-s>', ":s//g<Left><Left>", options = { silent = false }},
         {'<C-j>', ":m '>+1<CR>gv=gv"},
         {'<C-k>', ":m '<-2<CR>gv=gv"},
     }},

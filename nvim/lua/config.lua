@@ -17,6 +17,7 @@ vim.opt.expandtab = true
 -- Colorscheme
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
+
 -- vim.g.gruvbox_material_disable_italic_comment = true
 -- vim.cmd('colorscheme gruvbox-material')
 
@@ -32,7 +33,7 @@ vim.opt.splitright = true
 vim.opt.inccommand = 'nosplit'
 
 -- Lazy redraw to improve performance
-vim.opt.lazyredraw = true
+vim.opt.lazyredraw = false
 
 -- Scroll offset
 vim.opt.so = 15
@@ -53,10 +54,10 @@ vim.cmd(
 [[
     augroup Cul
         autocmd!
-        autocmd WinEnter * set cul
-        autocmd WinEnter * set cursorcolumn
-        autocmd WinLeave * set nocul
-        autocmd WinLeave * set nocursorcolumn
+        autocmd WinEnter * setl cul
+        autocmd WinEnter * setl cursorcolumn
+        autocmd WinLeave * setl nocul
+        autocmd WinLeave * setl nocursorcolumn
     augroup END
 ]])
 
@@ -85,12 +86,12 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
--- Fold settings
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldtext = [[
-    substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
-]]
-vim.wo.fillchars = "fold: "
-vim.wo.foldnestmax = 3
-vim.wo.foldminlines = 1
+-- -- Fold settings
+-- vim.wo.foldmethod = "expr"
+-- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldtext = [[
+--     substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
+-- ]]
+-- vim.wo.fillchars = "fold: "
+-- vim.wo.foldnestmax = 3
+-- vim.wo.foldminlines = 1
