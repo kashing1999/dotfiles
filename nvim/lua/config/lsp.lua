@@ -21,6 +21,10 @@ lsp.clangd.setup{
     coq.lsp_ensure_capabilities()
 }
 
+lsp.rls.setup{
+    coq.lsp_ensure_capabilities()
+}
+
 lsp.gopls.setup {
     cmd = {"gopls"},
     settings = {

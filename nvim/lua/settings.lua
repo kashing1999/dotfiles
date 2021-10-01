@@ -14,17 +14,6 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
--- Colorscheme
-vim.opt.termguicolors = true
-vim.opt.background = 'dark'
-
--- vim.g.gruvbox_material_disable_italic_comment = true
--- vim.cmd('colorscheme gruvbox-material')
-
-vim.g.everforest_background = 'hard'
-vim.g.everforest_disable_italic_comment = true
-vim.cmd('colorscheme everforest')
-
 -- Splits open at the bottom and right
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -45,6 +34,8 @@ vim.opt.listchars = {
     space = "⋅",
     eol = "↴",
 }
+
+vim.opt.termguicolors = true
 
 -- Highlight current cursor in buffer
 vim.opt.cul = true

@@ -1,21 +1,25 @@
--- impatient
-
-function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
-end
-
-require('impatient')
-
-if file_exists('lua/packer_compiled.lua') then
-    require('packer_compiled')
+local function prequire(m)
+    local ok, err = pcall(require, m)
+    if not ok then return nil, err end
+    return err
 end
 
 -- load default config
-require('config')
+require('settings')
+
+-- load plugins and configs
+require('impatient')
+
+prequire('packer_compiled')
 
 -- load local.lua
-require('local')
+prequire('local')
 
 -- load keymapping
 require('keymaps')
+
+-- load plugins
+require('plugins')
+
+-- color
+require('color')
