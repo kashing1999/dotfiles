@@ -25,25 +25,5 @@ treesitter.setup {
         enable = true,
         extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
         max_file_lines = 10000, -- Do not enable for files with more than n lines, int
-        -- Setting colors
-        colors = {
-            -- Colors here
-            "#e06c75",
-            "#e5c07b",
-            "#98c379",
-            "#56b6c2",
-            "#61afef",
-            "#C678dd",
-        },
-        -- term colors
-        termcolors = {
-            -- term colors here
-            "#e06c75",
-            "#e5c07b",
-            "#98c379",
-            "#56b6c2",
-            "#61afef",
-            "#C678dd",
-        }
     },
 }
