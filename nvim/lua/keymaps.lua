@@ -24,6 +24,8 @@ nest.applyKeymaps {
     {'I', 'zzI'},
     {'a', 'zza'},
     {'A', 'zzA'},
+    {'o', 'zzo'},
+    {'O', 'zzO'},
 
     -- Y yanks to end of line instead of whole line
     {'Y', 'y$'},
@@ -39,6 +41,8 @@ nest.applyKeymaps {
     -- Stop search highlight
     {'<esc><esc>', ':noh<CR>'},
 
+    {'<BS>', [[<c-^>\'"zz"]]},
+
     -- szw/vim-maximizer
     -- Use ripgrep to search for files
     {'R', ':Rg -i %<Left><Left><Left><Left><Left> ', options = { silent = false }},
@@ -53,7 +57,7 @@ nest.applyKeymaps {
         {'s', '<Cmd>SidebarNvimToggle<CR>'},
 
         -- Copy a line to clipboard
-        {'y', '"+yy'},
+        {'y', '"+y'},
 
         -- Plug 'jremmen/vim-ripgrep'
         -- Maximize a buffer window
@@ -91,8 +95,9 @@ nest.applyKeymaps {
         }};
 
         -- kyazdani42/nvim-tree.lua
-        {'c', '<Cmd>NvimTreeToggle<CR>'},
-        {'C', '<Cmd>NvimTreeFindFile<CR>'},
+        {'cc', '<Cmd>NvimTreeToggle<CR>'},
+        {'cd', '<Cmd>lcd %:p:h<CR>', options = { silent = false }},
+        {'cf', '<Cmd>NvimTreeFindFile<CR>'},
 
         -- liuchengxu/vista.vim
         {'v', '<Cmd>Vista!!<CR>'},

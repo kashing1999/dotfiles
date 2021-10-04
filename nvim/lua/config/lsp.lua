@@ -21,7 +21,7 @@ lsp.clangd.setup{
     coq.lsp_ensure_capabilities()
 }
 
-lsp.rls.setup{
+lsp.rust_analyzer.setup{
     coq.lsp_ensure_capabilities()
 }
 

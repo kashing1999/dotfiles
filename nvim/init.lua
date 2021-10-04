@@ -8,7 +8,7 @@ end
 require('settings')
 
 -- load plugins and configs
-require('impatient')
+prequire('impatient')
 
 prequire('packer_compiled')
 

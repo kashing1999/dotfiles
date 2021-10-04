@@ -3,7 +3,7 @@ autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[white]%}@%{$fg[white]%}%M %{$fg[cyan]%}%1~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # History
-HISTFILE=~/.zsh_history
+HISTFILE=~/.config/zsh/zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 setopt appendhistory
