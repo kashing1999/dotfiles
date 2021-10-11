@@ -49,6 +49,10 @@ bindkey "^[[1;5D" backward-word
 # Editor is nvim
 EDITOR="/usr/bin/nvim"
 
+# Path
+export PATH=/home/ks/.local/bin:$PATH
+export PATH=/home/ks/.cargo/bin:$PATH
+
 # Aliases
 alias ls="ls -h --color"
 alias l="ls"

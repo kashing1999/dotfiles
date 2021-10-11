@@ -13,13 +13,14 @@ prequire('impatient')
 prequire('packer_compiled')
 
 -- load local.lua
-prequire('local')
-
--- load keymapping
-require('keymaps')
+require('local')
 
 -- load plugins
 require('plugins')
 
+-- load keymapping
+require('keymaps')
+
 -- color
 require('color')
+

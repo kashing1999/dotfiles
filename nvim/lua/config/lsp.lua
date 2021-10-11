@@ -21,9 +21,10 @@ lsp.clangd.setup{
     coq.lsp_ensure_capabilities()
 }
 
-lsp.rust_analyzer.setup{
-    coq.lsp_ensure_capabilities()
-}
+-- lsp.rust_analyzer.setup{
+--     coq.lsp_ensure_capabilities()
+-- }
+require('config/rust')
 
 lsp.gopls.setup {
     cmd = {"gopls"},
@@ -37,15 +38,3 @@ lsp.gopls.setup {
     },
     coq.lsp_ensure_capabilities()
   }
-
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-
-require'nvim-lightbulb'.update_lightbulb {
-    sign = {
-        enabled = false,
-    },
-    virtual_text = {
-        enabled = true,
-        text = "",
-    },
-}

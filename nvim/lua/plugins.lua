@@ -10,6 +10,7 @@ return require('packer').startup({function()
     use 'lewis6991/impatient.nvim'
 
     -- Neovim
+    use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
 
     -- Quality of life
@@ -23,7 +24,7 @@ return require('packer').startup({function()
     use 'p00f/nvim-ts-rainbow'
     use 'LionC/nest.nvim'
     use {
-        'Vhyrro/neorg',
+        'nvim-neorg/neorg',
         config = function() require('config/neorg') end
     }
     use {
@@ -68,6 +69,7 @@ return require('packer').startup({function()
         config = function() require('config/colorizer') end
     }
     use 'projekt0n/github-nvim-theme'
+    use 'folke/lsp-colors.nvim'
 
     -- Ui elements:
     use 'kevinhwang91/nvim-hlslens'
@@ -108,16 +110,22 @@ return require('packer').startup({function()
     -- Lsp and syntax
     use { 'ms-jpq/coq_nvim', branch = 'coq' } -- main one
     use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
+    use 'simrat39/rust-tools.nvim'
     use {
         'neovim/nvim-lspconfig',
         config = function() require('config/lsp') end
     }
-    use 'kosayoda/nvim-lightbulb'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function() require('config/treesitter') end
     }
+    use {
+        'romgrk/nvim-treesitter-context',
+        config = function() require('config/context') end
+    }
+    -- use 'mfussenegger/nvim-dap'
+
 end,
 config = {
     -- Move to lua dir so impatient.nvim can cache it
