@@ -10,10 +10,10 @@ require('settings')
 -- load plugins and configs
 prequire('impatient')
 
-prequire('packer_compiled')
-
 -- load local.lua
 require('local')
+
+prequire('packer_compiled')
 
 -- load plugins
 require('plugins')
