@@ -163,7 +163,7 @@ nest.applyKeymaps {
 
         -- Split nicely
         {'w>', '<Cmd>FocusSplitNicely<CR>'},
-        -- {'w>', '<Cmd>vsplit<CR>'},
+        {'w>', '<Cmd>vsplit<CR>'},
 
         -- Close tab
         {'x>', '<Cmd>tabclose<CR>'},
@@ -204,6 +204,7 @@ nest.applyKeymaps {
         {'l>', '<Cmd>BufferOrderByLanguage<CR>'},
         {'n>', '<Cmd>BufferOrderByWindowNumber<CR>'},
         {'s>', '<Cmd>BufferPick<CR>'},
+        {'w>', '<Cmd>split<CR>'},
 
 
         -- Resize window
@@ -227,5 +228,6 @@ nest.applyKeymaps {
         {'<C-s>', ":s//g<Left><Left>", options = { silent = false }},
         {'<C-j>', ":m '>+1<CR>gv=gv"},
         {'<C-k>', ":m '<-2<CR>gv=gv"},
+        {'<space>y', '"+y'},
     }},
 }
