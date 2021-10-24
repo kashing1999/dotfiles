@@ -8,18 +8,29 @@ function funcs.setup (color)
             theme = color,
             -- theme = 'gruvbox_material',
             -- theme = 'github',
-            component_separators = {'', ''},
-            section_separators = {'', ''},
+            -- component_separators = {'', ''},
+            -- section_separators = {'', ''},
+            section_separators = { left = '', right = ''},
+            component_separators = { left = '', right = ''},
             disabled_filetypes = {},
         },
         sections = {
             lualine_a = {'mode'},
-            lualine_b = {'branch', {
+            lualine_b = {'branch',
+              {
                 'diff',
-                color_added        = '#98C379',
-                color_modified = '#E5C07B',
-                color_removed    = '#E06C75',
-            }},
+                colored = true, -- displays diff status in color if set to true
+                -- all colors are in format #rrggbb
+                diff_color = {
+                  added = {fg = '#98c379'},
+                  modified = {fg = '#e5c07b'},
+                  removed = {fg = '#e06c75'},
+                },
+                symbols = {added = '+', modified = '~', removed = '-'},
+                source = nil
+              }
+            },
+
             lualine_c = {'filename'},
             lualine_x = {'encoding', 'fileformat', 'filetype'},
             lualine_y = {'progress'},
@@ -35,7 +46,7 @@ function funcs.setup (color)
         },
         tabline = {},
 
-        extensions = {'nvim-tree'},
+        extensions = {'nvim-tree', 'fugitive', 'quickfix', 'toggleterm'},
     }
 end
 

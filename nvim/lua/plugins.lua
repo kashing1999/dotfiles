@@ -85,7 +85,7 @@ return require('packer').startup({function()
         'tversteeg/registers.nvim',
         config = function() require('config/registers') end
     }
-    use 'hoob3rt/lualine.nvim'
+    use 'nvim-lualine/lualine.nvim'
     use {
         'akinsho/toggleterm.nvim',
         config = function() require('config/toggleterm') end
@@ -97,7 +97,11 @@ return require('packer').startup({function()
     use {
         'kyazdani42/nvim-tree.lua',
         config = function() require('config/nvimtree') end
+    }
 
+    use {
+        'luukvbaal/stabilize.nvim',
+        config = function() require("stabilize").setup() end
     }
 
     -- Telescope
