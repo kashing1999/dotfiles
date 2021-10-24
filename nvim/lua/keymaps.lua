@@ -159,7 +159,7 @@ nest.applyKeymaps {
         {'Right>', '<C-w>l'},
 
         --Nvim tree focus
-        {'c>', '<Cmd>NvimTreeFocus<CR>'},
+        {'c>', '<Cmd>NvimTreeToggle<CR>'},
 
         -- Split nicely
         {'w>', '<Cmd>FocusSplitNicely<CR>'},
