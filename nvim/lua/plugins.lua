@@ -17,6 +17,7 @@ return require('packer').startup({function()
     use 'tpope/vim-sensible'
     use 'jremmen/vim-ripgrep'
     use 'szw/vim-maximizer'
+    use 'vim-scripts/restore_view.vim'
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = function() require('config/indent') end
@@ -38,6 +39,10 @@ return require('packer').startup({function()
     use {
         'kevinhwang91/nvim-bqf',
         config = function() require('config/bqf') end
+    }
+    use {
+        'ThePrimeagen/harpoon',
+        config = function() require('config/harpoon') end
     }
 
     -- Text editing

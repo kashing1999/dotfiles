@@ -23,6 +23,8 @@ tree.setup {
   diagnostics         = {
     enable = false,
   },
+  -- false by default, this option hides files and folders starting with a dot `.`
+  hide_dotfiles = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature
@@ -93,7 +95,6 @@ tree.setup {
 }
 
 
-vim.g.nvim_tree_hide_dotfiles = 1 --0 by default, this option hides files and folders starting with a dot `.`
 vim.g.nvim_tree_git_hl = 1 --0 by default, will enable file highlight for git attributes (can be used without the icons).
 vim.g.nvim_tree_highlight_opened_files = 1 --0 by default, will enable folder and file icon highlight for opened files/directories.
 vim.g.nvim_tree_root_folder_modifier = ':~' --This is the default. See :help filename-modifiers for more options

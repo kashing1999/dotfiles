@@ -94,12 +94,13 @@ vim.cmd(
         autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
     augroup END
 ]])
--- -- Fold settings
+-- Fold settings
 -- vim.wo.foldmethod = "expr"
--- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.o.foldtext = [[
---     substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
--- ]]
--- vim.wo.fillchars = "fold: "
+vim.wo.foldmethod = "manual"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldtext = [[
+    substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
+]]
+vim.wo.fillchars = "fold: "
 -- vim.wo.foldnestmax = 3
 -- vim.wo.foldminlines = 1

@@ -15,6 +15,13 @@ neorg.setup {
                 },
                 autodetect = true,
             },
+        },
+        ["core.norg.esupports"] = {
+            config = {
+                folds = {
+                    enabled = false,
+                }
+            }
         }
     },
 }
