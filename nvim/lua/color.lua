@@ -1,4 +1,4 @@
-local color = 'everforest'
+local color = 'catppuccin'
 -- local color = 'gruvbox_material'
 -- local color = 'github'
 

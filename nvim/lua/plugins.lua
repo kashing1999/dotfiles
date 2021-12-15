@@ -69,6 +69,10 @@ return require('packer').startup({function()
     -- Color
     use 'sainnhe/gruvbox-material'
     use 'sainnhe/everforest'
+    use({
+        "catppuccin/nvim",
+        as = "catppuccin"
+    })
     use {
         'norcalli/nvim-colorizer.lua',
         config = function() require('config/colorizer') end
