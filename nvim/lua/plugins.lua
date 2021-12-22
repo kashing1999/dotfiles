@@ -71,7 +71,8 @@ return require('packer').startup({function()
     use 'sainnhe/everforest'
     use({
         "catppuccin/nvim",
-        as = "catppuccin"
+        as = "catppuccin",
+        config = function() require('config/catppuccin') end
     })
     use {
         'norcalli/nvim-colorizer.lua',
@@ -80,7 +81,7 @@ return require('packer').startup({function()
     use 'projekt0n/github-nvim-theme'
     use 'folke/lsp-colors.nvim'
 
-    -- Ui elements:
+    -- Ui
     use 'kevinhwang91/nvim-hlslens'
     use {
         'romgrk/barbar.nvim',
@@ -100,8 +101,8 @@ return require('packer').startup({function()
         config = function() require('config/toggleterm') end
     }
     use {
-        'glepnir/dashboard-nvim',
-        config = function() require('config/dashboard') end
+        'startup-nvim/startup.nvim',
+        config = function() require('config/startup') end
     }
     use {
         'kyazdani42/nvim-tree.lua',

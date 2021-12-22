@@ -32,4 +32,4 @@ vim.cmd('colorscheme ' .. color)
 vim.opt.background = 'dark'
 
 local lualine = require('config/lualine')
-lualine.setup(color)
+lualine.setup('auto')
