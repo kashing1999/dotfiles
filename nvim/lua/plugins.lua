@@ -78,7 +78,6 @@ return require('packer').startup({function()
         'norcalli/nvim-colorizer.lua',
         config = function() require('config/colorizer') end
     }
-    use 'projekt0n/github-nvim-theme'
     use 'folke/lsp-colors.nvim'
 
     -- Ui
