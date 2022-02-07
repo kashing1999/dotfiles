@@ -8,12 +8,12 @@ end
 require('settings')
 
 -- load plugins and configs
-prequire('impatient')
+require('impatient')
 
 -- load local.lua
 require('local')
 
-prequire('packer_compiled')
+require('packer_compiled')
 
 -- load plugins
 require('plugins')
@@ -23,4 +23,3 @@ require('keymaps')
 
 -- color
 require('color')
-

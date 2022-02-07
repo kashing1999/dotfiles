@@ -16,10 +16,8 @@ vim.cmd([[
         highlight IndentBlanklineIndent5 guifg=#61AFEF
         highlight IndentBlanklineIndent6 guifg=#C678DD
 
-        highlight LspDiagnosticsVirtualTextError       guifg = #E06C75 gui=bold,italic,underline
-        highlight LspDiagnosticsVirtualTextWarning     guifg = #E5C07B gui=bold,italic,underline
-        highlight LspDiagnosticsVirtualTextInformation guifg = #56B6C2 gui=bold,italic,underline
-        highlight LspDiagnosticsVirtualTextHint        guifg = #98C379 gui=bold,italic,underline
+        highlight EoLSpace guibg=#E06C75
+        match EoLSpace /\s\+$/
     endfunction
 
     augroup OverrideColors
