@@ -94,10 +94,11 @@ nest.applyKeymaps {
             {'U', '<Cmd>lua require"gitsigns".reset_buffer_index()<CR>'},
         }};
 
-        -- kyazdani42/nvim-tree.lua
-        {'cc', '<Cmd>NvimTreeToggle<CR>'},
-        {'cd', '<Cmd>lcd %:p:h<CR>', options = { silent = false }},
-        {'cf', '<Cmd>NvimTreeFindFile<CR>'},
+        -- change root directory
+        {'cc', '<Cmd>lcd %:p:h<CR>', options = { silent = false }},
+        {'cr', '<Cmd>NeoRootChange<CR>', options = { silent = false }},
+        {'cb', '<Cmd>NeoRootSwitchMode<CR>', options = { silent = false }},
+        {'pwd', '<Cmd>pwd<CR>', options = { silent = false }},
 
         -- liuchengxu/vista.vim
         {'v', '<Cmd>Vista!!<CR>'},
@@ -177,6 +178,8 @@ nest.applyKeymaps {
         -- Moving text
         {'j>', ':m .+1<CR>=='},
         {'k>', ':m .-2<CR>=='},
+        {'m>', '<CMD>lua require("harpoon.mark").add_file()<CR>'},
+        {'n>', '<CMD>Telescope harpoon marks<CR>'},
     }},
 
     { '<A-', {

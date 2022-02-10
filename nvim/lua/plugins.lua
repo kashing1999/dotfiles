@@ -44,6 +44,7 @@ return require('packer').startup({function()
         'ThePrimeagen/harpoon',
         config = function() require('config/harpoon') end
     }
+    use 'nyngwang/NeoRoot.lua'
 
     -- Text editing
     use 'tpope/vim-surround'
