@@ -25,10 +25,10 @@ precmd() { vcs_info }
 
 # git branch
 setopt PROMPT_SUBST
-RPROMPT=\$vcs_info_msg_0_
+RPROMPT="$vcs_info_msg_0_"
 
 # Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' formats '%{$fg[cyan]%} %{$fg[white]%}%b'
 
 WORDCHARS=${WORDCHARS/\//}
 
@@ -45,6 +45,9 @@ bindkey "^[[F" end-of-line
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # Editor is nvim
 EDITOR="/usr/bin/nvim"
