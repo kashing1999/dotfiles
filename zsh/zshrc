@@ -77,8 +77,8 @@ alias fp="yay -Slq | fzf -m --preview 'yay -Si {1}' | yay -S -"
 alias dp="yay -Slq | fzf -m --preview 'yay -Si {1}' | yay --getpkgbuild -"
 
 # fzf for autocomplete
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
 
 # Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
