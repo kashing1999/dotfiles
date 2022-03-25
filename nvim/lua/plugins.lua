@@ -40,10 +40,6 @@ return require('packer').startup({function()
         'kevinhwang91/nvim-bqf',
         config = function() require('config/bqf') end
     }
-    use {
-        'ThePrimeagen/harpoon',
-        config = function() require('config/harpoon') end
-    }
     use 'nyngwang/NeoRoot.lua'
 
     -- Text editing
