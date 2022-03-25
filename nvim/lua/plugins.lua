@@ -29,10 +29,6 @@ return require('packer').startup({function()
         config = function() require('config/neorg') end
     }
     use {
-        'beauwilliams/focus.nvim',
-        config = function() require('config/focus') end
-    }
-    use {
         'kwkarlwang/bufresize.nvim',
         config = function() require('config/bufresize') end
     }
@@ -40,7 +36,6 @@ return require('packer').startup({function()
         'kevinhwang91/nvim-bqf',
         config = function() require('config/bqf') end
     }
-    use 'nyngwang/NeoRoot.lua'
 
     -- Text editing
     use 'tpope/vim-surround'
@@ -61,7 +56,6 @@ return require('packer').startup({function()
         'lewis6991/gitsigns.nvim',
         config = function() require('config/git') end
     }
-    use 'sindrets/diffview.nvim'
 
     -- Color
     use 'sainnhe/gruvbox-material'

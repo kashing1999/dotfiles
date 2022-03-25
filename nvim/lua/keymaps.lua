@@ -73,8 +73,6 @@ nest.applyKeymaps {
 
         -- f-person/git-blame.nvim
         {'g', {
-            {'d', '<Cmd>DiffviewOpen<CR>'},
-
             {'g', '<Cmd>Git<CR>'},
 
             {'c', '<Cmd>Telescope git_bcommits<CR>'},
@@ -95,13 +93,8 @@ nest.applyKeymaps {
         }};
 
         -- change root directory
-        {'cc', '<Cmd>lcd %:p:h<CR>', options = { silent = false }},
-        {'cr', '<Cmd>NeoRootChange<CR>', options = { silent = false }},
-        {'cb', '<Cmd>NeoRootSwitchMode<CR>', options = { silent = false }},
+        {'cd', '<Cmd>lcd %:p:h<CR>', options = { silent = false }},
         {'pwd', '<Cmd>pwd<CR>', options = { silent = false }},
-
-        -- liuchengxu/vista.vim
-        {'v', '<Cmd>Vista!!<CR>'},
 
         -- tabs
         {'1', '1gt'},
