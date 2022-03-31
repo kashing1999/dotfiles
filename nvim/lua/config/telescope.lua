@@ -33,7 +33,7 @@ telescope.setup{
         borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
         color_devicons = true,
         use_less = true,
-        path_display = {'smart'},
+        path_display = {},
         set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
         file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
         grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
