@@ -35,22 +35,36 @@ vim.opt.listchars = {
     eol = "↴",
 }
 
+vim.cmd(
+[[
+    let g:do_filetype_lua = 1
+    let g:did_load_filetypes = 0
+]]
+)
+
+-- proper terminal colors
 vim.opt.termguicolors = true
 
 -- Highlight current cursor in buffer
 vim.opt.cul = true
 vim.opt.colorcolumn = '99999'
 vim.opt.cursorcolumn = true
-vim.cmd(
-[[
-    augroup Cul
-        autocmd!
-        autocmd WinEnter * setl cul
-        autocmd WinEnter * setl cursorcolumn
-        autocmd WinLeave * setl nocul
-        autocmd WinLeave * setl nocursorcolumn
-    augroup END
-]])
+
+vim.api.nvim_create_autocmd("WinEnter", {
+    pattern = "*",
+    callback = function(args)
+        vim.opt.cul = true
+        vim.opt.cursorcolumn = true
+    end,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+    pattern = "*",
+    callback = function(args)
+        vim.opt.cul = false
+        vim.opt.cursorcolumn = false
+    end,
+})
 
 -- Disable unused builtins
 local disabled_built_ins = {
@@ -77,30 +91,10 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
-vim.cmd(
-[[
-    " Protect large files from sourcing and other overhead.
-    " Files become read only
-    " Large files are > 10M
-    " Set options:
-    " eventignore+=FileType (no syntax highlighting etc
-    " assumes FileType always on)
-    " noswapfile (save copy of file)
-    " bufhidden=unload (save memory when other file is viewed)
-    " buftype=nowrite (file is read-only)
-    " undolevels=-1 (no undo possible)
-    let g:LargeFile = 1024 * 1024 * 10
-    augroup LargeFile
-        autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
-    augroup END
-]])
 -- Fold settings
--- vim.wo.foldmethod = "expr"
 vim.wo.foldmethod = "manual"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldtext = [[
     substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
 ]]
 vim.wo.fillchars = "fold: "
--- vim.wo.foldnestmax = 3
--- vim.wo.foldminlines = 1

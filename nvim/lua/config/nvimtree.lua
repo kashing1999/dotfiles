@@ -21,8 +21,6 @@ tree.setup {
   diagnostics         = {
     enable = false,
   },
-  -- false by default, this option hides files and folders starting with a dot `.`
-  hide_dotfiles = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature
