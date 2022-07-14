@@ -38,6 +38,9 @@ nest.applyKeymaps {
     {'g*', "g*<Cmd>lua require('hlslens').start()<CR>"},
     {'g#', "g#<Cmd>lua require('hlslens').start()<CR>"},
 
+    -- lsgsaga
+    {"gh", "<cmd>Lspsaga lsp_finder<CR>"},
+
     -- Stop search highlight
     {'<esc><esc>', ':noh<CR>'},
 
@@ -70,6 +73,11 @@ nest.applyKeymaps {
             {'l', '<Cmd>set list<CR>'},
             {'n', '<Cmd>set nolist<CR>'},
         }};
+        -- lsp
+        {'r', '<Cmd>Telescope lsp_references<CR>'},
+        {'d', '<Cmd>Telescope lsp_definitions<CR>'},
+        {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
+        {'a', '<Cmd>Lspsaga code_action<CR>'},
 
         -- f-person/git-blame.nvim
         {'g', {
@@ -131,22 +139,14 @@ nest.applyKeymaps {
         {'f', '<Cmd>Telescope find_files<CR>'},
         {'g', '<Cmd>Telescope live_grep<CR>'},
         {'b', '<Cmd>Telescope buffers<CR>'},
+        {'t', '<Cmd>Telescope treesitter<CR>'},
 
         {'h', '<Cmd>Telescope help_tags<CR>'},
         {'m', '<Cmd>Telescope man_pages<CR>'},
-
-        {'q', '<Cmd>Telescope quickfix<CR>'},
-        {'r', '<Cmd>Telescope lsp_references<CR>'},
-        {'d', '<Cmd>Telescope lsp_definitions<CR>'},
-        {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
-        {'a', '<Cmd>Telescope lsp_code_actions<CR>'},
-
-        {'c', '<Cmd>Telescope file_browser<CR>'},
-        {'t', '<Cmd>Telescope treesitter<CR>'},
     }},
 
     { '<C-', {
-        -- Resize window
+        -- Navigate splits
         {'Left>',  '<C-w>h'},
         {'Down>',  '<C-w>j'},
         {'Up>',    '<C-w>k'},
@@ -156,7 +156,6 @@ nest.applyKeymaps {
         {'c>', '<Cmd>NvimTreeToggle<CR>'},
 
         -- Split nicely
-        {'w>', '<Cmd>FocusSplitNicely<CR>'},
         {'w>', '<Cmd>vsplit<CR>'},
 
         -- Close tab
@@ -171,8 +170,6 @@ nest.applyKeymaps {
         -- Moving text
         {'j>', ':m .+1<CR>=='},
         {'k>', ':m .-2<CR>=='},
-        {'m>', '<CMD>lua require("harpoon.mark").add_file()<CR>'},
-        {'n>', '<CMD>Telescope harpoon marks<CR>'},
     }},
 
     { '<A-', {
@@ -200,7 +197,6 @@ nest.applyKeymaps {
         {'l>', '<Cmd>BufferOrderByLanguage<CR>'},
         {'n>', '<Cmd>BufferOrderByWindowNumber<CR>'},
         {'s>', '<Cmd>BufferPick<CR>'},
-        {'w>', '<Cmd>split<CR>'},
 
 
         -- Resize window
@@ -225,5 +221,6 @@ nest.applyKeymaps {
         {'<C-j>', ":m '>+1<CR>gv=gv"},
         {'<C-k>', ":m '<-2<CR>gv=gv"},
         {'<space>y', '"+y'},
+        {'<space>a', ":<C-U>Lspsaga range_code_action<CR>"},
     }},
 }

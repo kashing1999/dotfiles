@@ -4,6 +4,12 @@ local function prequire(m)
     return err
 end
 
+-- color
+require('color')
+
+-- load plugins
+require('plugins')
+
 -- load default config
 require('settings')
 
@@ -15,11 +21,5 @@ require('local')
 
 require('packer_compiled')
 
--- load plugins
-require('plugins')
-
 -- load keymapping
 require('keymaps')
-
--- color
-require('color')

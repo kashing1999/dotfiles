@@ -44,8 +44,6 @@ tree.setup {
     -- width of the window, can be either a number (columns) or a string in `%`
     width = 40,
     side = 'right',
-    -- if true the tree will resize itself after opening a file
-    auto_resize = true,
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings

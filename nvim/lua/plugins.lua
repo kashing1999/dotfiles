@@ -36,6 +36,11 @@ return require('packer').startup({function()
         'kevinhwang91/nvim-bqf',
         config = function() require('config/bqf') end
     }
+    use 'lambdalisue/suda.vim'
+    use {
+        'yamatsum/nvim-cursorline',
+        config = function() require('config/cursorline') end
+    }
 
     -- Text editing
     use 'tpope/vim-surround'
@@ -118,6 +123,10 @@ return require('packer').startup({function()
     use {
         'neovim/nvim-lspconfig',
         config = function() require('config/lsp') end
+    }
+    use {
+        'glepnir/lspsaga.nvim',
+        config = function() require('config/lspsaga') end
     }
     use {
         'nvim-treesitter/nvim-treesitter',
