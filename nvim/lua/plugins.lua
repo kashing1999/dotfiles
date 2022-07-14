@@ -43,7 +43,10 @@ return require('packer').startup({function()
     }
 
     -- Text editing
-    use 'tpope/vim-surround'
+    use {
+        'kylechui/nvim-surround',
+        config = function() require("nvim-surround").setup() end
+    }
     use 'tpope/vim-commentary'
     use {
         'ggandor/lightspeed.nvim',
