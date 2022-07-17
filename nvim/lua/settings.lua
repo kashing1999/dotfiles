@@ -98,3 +98,15 @@ vim.o.foldtext = [[
     substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
 ]]
 vim.wo.fillchars = "fold: "
+
+-- smart dd
+local function delete_special()
+	local current_line = vim.api.nvim_get_current_line() 
+	if current_line[1] == "" then
+		return '"_dd'
+	else
+		return 'dd'
+	end
+end
+
+vim.keymap.set( "n", "dd", delete_special, { noremap = true, expr = true } )
