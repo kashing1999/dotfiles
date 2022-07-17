@@ -71,7 +71,8 @@ return require('packer').startup({function()
     use({
         "catppuccin/nvim",
         as = "catppuccin",
-        config = function() require('config/catppuccin') end
+        config = function() require('config/catppuccin') end,
+        run = "CatppuccinCompile",
     })
     use {
         'norcalli/nvim-colorizer.lua',
