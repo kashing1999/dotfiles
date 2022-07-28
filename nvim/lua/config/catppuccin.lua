@@ -4,6 +4,7 @@ vim.g.catppuccin_flavour = "macchiato"
 catppuccin.setup({
     compile = {
         enabled = true,
+        path = vim.fn.stdpath "cache" .. "/catppuccin"
     },
     integrations = {
         treesitter = true,
