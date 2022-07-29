@@ -35,13 +35,6 @@ vim.opt.listchars = {
     eol = "↴",
 }
 
-vim.cmd(
-[[
-    let g:do_filetype_lua = 1
-    let g:did_load_filetypes = 0
-]]
-)
-
 -- proper terminal colors
 vim.opt.termguicolors = true
 
