@@ -21,7 +21,11 @@ lsp.clangd.setup{
     coq.lsp_ensure_capabilities()
 }
 
-require('config/rust')
+require('rust-tools').setup({
+    server = {
+        coq.lsp_ensure_capabilities()
+    }
+})
 
 lsp.gopls.setup {
     cmd = {"gopls"},

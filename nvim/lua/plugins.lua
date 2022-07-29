@@ -27,12 +27,9 @@ return require('packer').startup({function()
         config = function() require('config/neorg') end
     }
     use {
-        'kwkarlwang/bufresize.nvim',
-        config = function() require('config/bufresize') end
-    }
-    use {
         'kevinhwang91/nvim-bqf',
-        config = function() require('config/bqf') end
+        config = function() require('bqf').setup({ auto_enable = true })
+        end
     }
     use 'lambdalisue/suda.vim'
     use {
@@ -73,7 +70,7 @@ return require('packer').startup({function()
     })
     use {
         'norcalli/nvim-colorizer.lua',
-        config = function() require('config/colorizer') end
+        config = function() require('colorizer').setup() end
     }
 
     -- Ui
@@ -84,11 +81,11 @@ return require('packer').startup({function()
     }
     use {
         'kyazdani42/nvim-web-devicons',
-        config = function() require('config/icons') end
+        config = function() require('nvim-web-devicons').setup() end
     }
     use {
         'tversteeg/registers.nvim',
-        config = function() require('config/registers') end
+        config = function() vim.g.registers_window_border = "rounded" end
     }
     use 'nvim-lualine/lualine.nvim'
     use {
@@ -143,7 +140,7 @@ return require('packer').startup({function()
     }
     use {
         'romgrk/nvim-treesitter-context',
-        config = function() require('config/context') end
+        config = function() require('treesitter-context').setup() end
     }
 end,
 
