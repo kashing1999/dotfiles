@@ -36,4 +36,7 @@ lsp.gopls.setup {
     coq.lsp_ensure_capabilities()
 }
 
-vim.diagnostic.config({ virtual_lines = false })
+vim.diagnostic.config({
+    virtual_lines = false,
+    virtual_text = true
+})
