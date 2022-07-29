@@ -118,7 +118,7 @@ return require('packer').startup({function()
         'nvim-telescope/telescope.nvim',
         config = function() require('config/telescope') end
     }
-    use 'nvim-telescope/telescope-fzy-native.nvim'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Lsp and syntax
     use { 'ms-jpq/coq_nvim', branch = 'coq' } -- main one
