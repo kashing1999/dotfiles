@@ -5,7 +5,7 @@ local function prequire(m)
 end
 
 -- load plugins and configs
-require('impatient')
+prequire('impatient')
 
 -- load plugins
 require('plugins')
