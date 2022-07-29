@@ -1,6 +1,6 @@
 local catppuccin = require("catppuccin")
 
-vim.g.catppuccin_flavour = "macchiato"
+vim.g.catppuccin_flavour = "mocha"
 catppuccin.setup({
     compile = {
         enabled = true,
