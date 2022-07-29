@@ -4,7 +4,7 @@ toggleterm.setup{
     -- size can be a number or function which is passed the current terminal
     size = function(term)
         if term.direction == "horizontal" then
-            return 24
+            return 20
         elseif term.direction == "vertical" then
             return vim.o.columns * 0.4
         end
@@ -18,7 +18,7 @@ toggleterm.setup{
     insert_mappings = true, -- whether or not the open mapping applies in insert mode
     persist_size = true,
     -- direction = 'vertical' | 'horizontal' | 'window' | 'float',
-    direction = 'float',
+    direction = 'horizontal',
     close_on_exit = true, -- close the terminal window when the process exits
     shell = vim.o.shell, -- change the default shell
     -- This field is only relevant if direction is set to 'float'

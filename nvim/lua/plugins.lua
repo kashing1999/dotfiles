@@ -10,11 +10,9 @@ return require('packer').startup({function()
     use 'lewis6991/impatient.nvim'
 
     -- Neovim
-    use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
 
     -- Quality of life
-    use 'tpope/vim-sensible'
     use 'jremmen/vim-ripgrep'
     use 'szw/vim-maximizer'
     use 'vim-scripts/restore_view.vim'
@@ -59,7 +57,6 @@ return require('packer').startup({function()
 
     -- Git
     use 'tpope/vim-fugitive'
-    use 'f-person/git-blame.nvim'
     use {
         'lewis6991/gitsigns.nvim',
         config = function() require('config/git') end
@@ -78,7 +75,6 @@ return require('packer').startup({function()
         'norcalli/nvim-colorizer.lua',
         config = function() require('config/colorizer') end
     }
-    use 'folke/lsp-colors.nvim'
 
     -- Ui
     use 'kevinhwang91/nvim-hlslens'
@@ -120,7 +116,7 @@ return require('packer').startup({function()
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-    -- Lsp and syntax
+    -- Lsp
     use { 'ms-jpq/coq_nvim', branch = 'coq' } -- main one
     use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
     use 'simrat39/rust-tools.nvim'
@@ -133,6 +129,14 @@ return require('packer').startup({function()
         config = function() require('config/lspsaga') end
     }
     use {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+    }
+
+    -- treesitter
+    use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function() require('config/treesitter') end
@@ -141,9 +145,8 @@ return require('packer').startup({function()
         'romgrk/nvim-treesitter-context',
         config = function() require('config/context') end
     }
-    -- use 'mfussenegger/nvim-dap'
-
 end,
+
 config = {
     -- Move to lua dir so impatient.nvim can cache it
     compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'

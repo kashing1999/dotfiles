@@ -70,20 +70,20 @@ nest.applyKeymaps {
         -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
 
-        -- lewis6991/gitsigns.nvim
-        {'b', '<Cmd>GitBlameToggle<CR>'},
-
         {'l', {
             {'l', '<Cmd>set list<CR>'},
             {'n', '<Cmd>set nolist<CR>'},
         }};
+
         -- lsp
         {'r', '<Cmd>Telescope lsp_references<CR>'},
         {'d', '<Cmd>Telescope lsp_definitions<CR>'},
         {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
         {'a', '<Cmd>Lspsaga code_action<CR>'},
 
-        -- f-person/git-blame.nvim
+        -- git
+        {'b', '<Cmd>Gitsigns toggle_current_line_blame<CR>'},
+
         {'g', {
             {'g', '<Cmd>Git<CR>'},
 

@@ -21,20 +21,19 @@ lsp.clangd.setup{
     coq.lsp_ensure_capabilities()
 }
 
--- lsp.rust_analyzer.setup{
---     coq.lsp_ensure_capabilities()
--- }
 require('config/rust')
 
 lsp.gopls.setup {
     cmd = {"gopls"},
     settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
         staticcheck = true,
-      },
+        },
     },
     coq.lsp_ensure_capabilities()
-  }
+}
+
+vim.diagnostic.config({ virtual_lines = false })

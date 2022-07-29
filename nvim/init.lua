@@ -4,14 +4,14 @@ local function prequire(m)
     return err
 end
 
+-- load plugins and configs
+require('impatient')
+
 -- load plugins
 require('plugins')
 
 -- load default config
 require('settings')
-
--- load plugins and configs
-require('impatient')
 
 -- load local.lua
 require('local')

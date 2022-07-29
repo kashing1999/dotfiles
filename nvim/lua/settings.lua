@@ -100,7 +100,7 @@ vim.o.foldtext = [[
 vim.wo.fillchars = "fold: "
 
 -- smart dd
-local function delete_special()
+local function smart_delete()
 	local current_line = vim.api.nvim_get_current_line() 
 	if current_line[1] == "" then
 		return '"_dd'
@@ -109,4 +109,15 @@ local function delete_special()
 	end
 end
 
-vim.keymap.set( "n", "dd", delete_special, { noremap = true, expr = true } )
+vim.keymap.set( "n", "dd", smart_delete, { noremap = true, expr = true } )
+
+local function toggle_diagnostics()
+    local virtual_lines = not vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({
+        virtual_lines = virtual_lines,
+        virtual_text = not virtual_lines
+    })
+    return
+end
+
+vim.keymap.set( "n", "<leader>e", toggle_diagnostics, { noremap = true } )

@@ -18,7 +18,7 @@ tree.setup {
                 { key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
                 { key = {"<2-RightMouse>", "c"},        cb = tree_cb("cd") },
                 { key = "v",                            cb = tree_cb("vsplit") },
-                { key = "V",                            cb = tree_cb("split") },
+                { key = "h",                            cb = tree_cb("split") },
                 { key = "t",                            cb = tree_cb("tabnew") },
                 { key = "<",                            cb = tree_cb("prev_sibling") },
                 { key = ">",                            cb = tree_cb("next_sibling") },
