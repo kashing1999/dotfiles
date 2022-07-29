@@ -40,7 +40,6 @@ vim.opt.termguicolors = true
 
 -- Highlight current cursor in buffer
 vim.opt.cul = true
-vim.opt.colorcolumn = '99999'
 vim.opt.cursorcolumn = true
 
 vim.api.nvim_create_autocmd("WinEnter", {
