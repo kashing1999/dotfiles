@@ -62,6 +62,10 @@ nest.applyKeymaps {
         -- Copy a line to clipboard
         {'y', '"+y'},
 
+        -- Split
+        {'v', '<Cmd>vsplit<CR>'},
+        {'h', '<Cmd>split<CR>'},
+
         -- Plug 'jremmen/vim-ripgrep'
         -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
@@ -154,9 +158,6 @@ nest.applyKeymaps {
 
         --Nvim tree focus
         {'c>', '<Cmd>NvimTreeToggle<CR>'},
-
-        -- Split nicely
-        {'w>', '<Cmd>vsplit<CR>'},
 
         -- Close tab
         {'x>', '<Cmd>tabclose<CR>'},
