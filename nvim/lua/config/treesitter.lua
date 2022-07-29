@@ -25,6 +25,7 @@ treesitter.setup {
         "dockerfile",
         "toml",
         "yaml",
+        "norg"
     },
     ignore_install = { }, -- List of parsers to ignore installing
     highlight = {
