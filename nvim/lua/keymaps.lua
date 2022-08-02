@@ -56,9 +56,6 @@ nest.applyKeymaps {
         {'q', '<Cmd>q<CR>'},
         {'w', '<Cmd>w!<CR>'},
 
-        -- Sidebar
-        {'s', '<Cmd>SidebarNvimToggle<CR>'},
-
         -- Copy a line to clipboard
         {'y', '"+y'},
 
@@ -66,7 +63,6 @@ nest.applyKeymaps {
         {'v', '<Cmd>vsplit<CR>'},
         {'h', '<Cmd>split<CR>'},
 
-        -- Plug 'jremmen/vim-ripgrep'
         -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
 
@@ -80,6 +76,7 @@ nest.applyKeymaps {
         {'d', '<Cmd>Telescope lsp_definitions<CR>'},
         {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
         {'a', '<Cmd>Lspsaga code_action<CR>'},
+        {'e', '<Cmd>lua vim.diagnostic.open_float()<CR>'},
 
         -- git
         {'b', '<Cmd>Gitsigns toggle_current_line_blame<CR>'},

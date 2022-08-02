@@ -102,14 +102,3 @@ local function smart_delete()
 end
 
 vim.keymap.set( "n", "dd", smart_delete, { noremap = true, expr = true } )
-
-local function toggle_diagnostics()
-    local virtual_lines = not vim.diagnostic.config().virtual_lines
-    vim.diagnostic.config({
-        virtual_lines = virtual_lines,
-        virtual_text = not virtual_lines
-    })
-    return
-end
-
-vim.keymap.set( "n", "<leader>e", toggle_diagnostics, { noremap = true } )
