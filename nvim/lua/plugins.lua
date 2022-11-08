@@ -95,7 +95,10 @@ return require('packer').startup({function()
             })
         end
     }
-    use 'nvim-lualine/lualine.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        config = function() require('config/lualine').setup('auto') end
+    }
     use {
         'akinsho/toggleterm.nvim',
         config = function() require('config/toggleterm') end

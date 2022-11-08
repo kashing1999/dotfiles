@@ -10,18 +10,14 @@ saga.init_lsp_saga({
     -- when cursor in saga window you config these to move
     move_in_saga = { prev = '<C-p>',next = '<C-n>'},
     -- Error, Warn, Info, Hint
-    -- use emoji like
-    -- { "🙀", "😿", "😾", "😺" }
-    -- or
-    -- { "😡", "😥", "😤", "😐" }
-    -- and diagnostic_header can be a function type
+    -- diagnostic_header can be a function type
     -- must return a string and when diagnostic_header
     -- is function type it will have a param `entry`
     -- entry is a table type has these filed
     -- { bufnr, code, col, end_col, end_lnum, lnum, message, severity, source }
-    diagnostic_header = { " ", " ", " ", "ﴞ " },
+    diagnostic_header = { "x ", "! ", "i ", "? " },
     -- use emoji lightbulb in default
-    code_action_icon = "💡",
+    code_action_icon = "",
     -- if true can press number to execute the codeaction in codeaction window
     code_action_num_shortcut = true,
     -- same as nvim-lightbulb but async

@@ -19,6 +19,9 @@ nest.applyKeymaps {
     -- Don't put stuff deleted from c into buffer
     {'c', '"_c'},
 
+    -- Empty current line
+    {'dl', '0D'},
+
     -- Center line on insert mode
     {'i', 'zzi'},
     {'I', 'zzI'},
@@ -74,7 +77,7 @@ nest.applyKeymaps {
         {'e', '<Cmd>lua vim.diagnostic.open_float()<CR>'},
 
         {'b', '<Cmd>Gitsigns toggle_current_line_blame<CR>'},
-        {'B', '<Cmd>lua require"gitsigns".blame_line()<CR>'},
+        {'B', '<Cmd>Gitsigns blame_line<CR>'},
 
         {'g', {
             {'g', '<Cmd>Git<CR>'},

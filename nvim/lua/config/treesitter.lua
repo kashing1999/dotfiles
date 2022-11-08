@@ -15,6 +15,7 @@ treesitter.setup {
         "c",
         "lua",
         "go",
+        "gomod",
         "rust",
         "python",
         "java",
@@ -25,7 +26,8 @@ treesitter.setup {
         "dockerfile",
         "toml",
         "yaml",
-        "norg"
+        "norg",
+        "hcl",
     },
     ignore_install = { }, -- List of parsers to ignore installing
     highlight = {

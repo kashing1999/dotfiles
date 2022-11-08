@@ -1,10 +1,15 @@
 local catppuccin = require("catppuccin")
 
-vim.g.catppuccin_flavour = "mocha"
 catppuccin.setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
     compile = {
         enabled = true,
         path = vim.fn.stdpath "cache" .. "/catppuccin"
+    },
+    dim_inactive = {
+        enabled = true,
+        shade = "dark",
+        percentage = 0,
     },
     integrations = {
         treesitter = true,

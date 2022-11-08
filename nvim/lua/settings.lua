@@ -5,6 +5,8 @@ vim.opt.relativenumber = true
 -- Use mouse in all modes
 vim.opt.mouse = 'a'
 
+vim.api.nvim_set_option('signcolumn', 'yes')
+
 -- Set hidden
 vim.opt.hidden = true
 
@@ -32,8 +34,7 @@ vim.opt.list = true
 
 vim.opt.listchars = {
     trail = "·",
-    lead = "·",
-    tab = "»»",
+    tab   = "==>",
 }
 
 -- proper terminal colors
@@ -92,7 +93,7 @@ vim.o.foldtext = [[
 ]]
 vim.wo.fillchars = "fold: "
 
--- smart dd
+-- Smart dd which does not yank empty line
 local function smart_delete()
     local current_line = vim.api.nvim_get_current_line()
     if current_line[1] == "" then

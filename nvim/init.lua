@@ -7,11 +7,11 @@ end
 -- load plugins and configs
 prequire('impatient')
 
--- load plugins
-require('plugins')
-
 -- load default config
 require('settings')
+
+-- load plugins
+require('plugins')
 
 -- load local.lua
 prequire('local')
