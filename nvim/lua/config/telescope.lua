@@ -8,7 +8,8 @@ telescope.setup{
             '--with-filename',
             '--line-number',
             '--column',
-            '--smart-case'
+            '--smart-case',
+            '--no-ignore',
         },
         prompt_prefix = "> ",
         selection_caret = "> ",

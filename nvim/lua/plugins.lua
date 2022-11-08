@@ -15,7 +15,6 @@ return require('packer').startup({function()
     -- Quality of life
     use 'jremmen/vim-ripgrep'
     use 'szw/vim-maximizer'
-    use 'vim-scripts/restore_view.vim'
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = function() require('config/indent') end
