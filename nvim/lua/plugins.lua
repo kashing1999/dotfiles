@@ -136,6 +136,10 @@ return require('packer').startup({function()
         'glepnir/lspsaga.nvim',
         config = function() require('config/lspsaga') end
     }
+    use {
+        'j-hui/fidget.nvim',
+        config = function() require('fidget').setup{} end
+    }
 
     -- treesitter
     use {

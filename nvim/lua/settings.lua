@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 -- Use mouse in all modes
 vim.opt.mouse = 'a'
 
-vim.api.nvim_set_option('signcolumn', 'yes')
+vim.wo.signcolumn = 'yes'
 
 -- Set hidden
 vim.opt.hidden = true
