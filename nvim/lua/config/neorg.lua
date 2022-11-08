@@ -7,11 +7,6 @@ neorg.setup {
     load = {
         ["core.defaults"] = {}, -- Load all the default modules
         ["core.norg.concealer"] = {}, -- Allows for use of icons
-        ["core.norg.esupports.metagen"] = {
-            config = { -- Note that this table is optional and doesn't need to be provided
-                type = "auto"
-            }
-        },
         ["core.norg.dirman"] = { -- Manage your directories with Neorg
             config = {
                 workspaces = {
@@ -21,6 +16,13 @@ neorg.setup {
                 autodetect = true,
             },
         },
+        -- ["core.norg.esupports"] = {
+        --     config = {
+        --         folds = {
+        --             enabled = false,
+        --         }
+        --     }
+        -- }
     },
 }
 

@@ -46,7 +46,6 @@ nest.applyKeymaps {
 
     {'<BS>', [[<c-^>\'"zz"]]},
 
-    -- szw/vim-maximizer
     -- Use ripgrep to search for files
     {'R', ':Rg -i %<Left><Left><Left><Left><Left> ', options = { silent = false }},
 
@@ -56,14 +55,11 @@ nest.applyKeymaps {
         {'q', '<Cmd>q<CR>'},
         {'w', '<Cmd>w!<CR>'},
 
-        -- Copy a line to clipboard
         {'y', '"+y'},
 
-        -- Split
         {'v', '<Cmd>vsplit<CR>'},
         {'h', '<Cmd>split<CR>'},
 
-        -- Maximize a buffer window
         {'m', '<Cmd>MaximizerToggle<CR>'},
 
         {'l', {
@@ -71,15 +67,14 @@ nest.applyKeymaps {
             {'n', '<Cmd>set nolist<CR>'},
         }};
 
-        -- lsp
         {'r', '<Cmd>Telescope lsp_references<CR>'},
         {'d', '<Cmd>Telescope lsp_definitions<CR>'},
         {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
         {'a', '<Cmd>Lspsaga code_action<CR>'},
         {'e', '<Cmd>lua vim.diagnostic.open_float()<CR>'},
 
-        -- git
         {'b', '<Cmd>Gitsigns toggle_current_line_blame<CR>'},
+        {'B', '<Cmd>lua require"gitsigns".blame_line()<CR>'},
 
         {'g', {
             {'g', '<Cmd>Git<CR>'},
@@ -89,16 +84,6 @@ nest.applyKeymaps {
             {'b', '<Cmd>Telescope git_branches<CR>'},
             {'s', '<Cmd>Telescope git_status<CR>'},
 
-            {'h', '<Cmd>lua require"gitsigns".stage_hunk()<CR>'},
-            {'h', '<Cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
-            {'u', '<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>'},
-            {'r', '<Cmd>lua require"gitsigns".reset_hunk()<CR>'},
-            {'r', '<Cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', mode='v'},
-            {'R', '<Cmd>lua require"gitsigns".reset_buffer()<CR>'},
-            {'p', '<Cmd>lua require"gitsigns".preview_hunk()<CR>'},
-            {'B', '<Cmd>lua require"gitsigns".blame_line(true)<CR>'},
-            {'H', '<Cmd>lua require"gitsigns".stage_buffer()<CR>'},
-            {'U', '<Cmd>lua require"gitsigns".reset_buffer_index()<CR>'},
         }};
 
         -- change root directory
@@ -116,22 +101,6 @@ nest.applyKeymaps {
         {'8', '8gt'},
         {'9', '9gt'},
         {'0', '<Cmd>tablast<CR>'},
-
-        {'<Left>',  '<Cmd>BufferPrevious<CR>'},
-        {'<Right>', '<Cmd>BufferNext<CR>'},
-
-        -- glepnir/dashboard-nvim
-        {'p', {
-            {'s', '<Cmd>SessionSave<CR>'},
-            {'l', '<Cmd>SessionLoad<CR>'},
-            {'h', '<Cmd>DashboardFindHistory<CR>'},
-            {'a', '<Cmd>DashboardFindWord<CR>'},
-            {'b', '<Cmd>DashboardJumpMark<CR>'},
-            {'n', '<Cmd>DashboardNewFile<CR>'},
-            {'c', '<Cmd>DashboardChangeColorscheme<CR>'},
-            {'f', '<Cmd>DashboardFindFile<CR>'},
-        }},
-
     }},
 
     -- nvim-telescope/telescope.nvim
@@ -219,6 +188,6 @@ nest.applyKeymaps {
         {'<C-j>', ":m '>+1<CR>gv=gv"},
         {'<C-k>', ":m '<-2<CR>gv=gv"},
         {'<space>y', '"+y'},
-        {'<space>a', ":<C-U>Lspsaga range_code_action<CR>"},
+        {'<space>a', ":<C-U>Lspsaga code_action<CR>"},
     }},
 }

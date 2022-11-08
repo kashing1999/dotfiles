@@ -14,9 +14,9 @@ require('plugins')
 require('settings')
 
 -- load local.lua
-require('local')
+prequire('local')
 
-require('packer_compiled')
+prequire('packer_compiled')
 
 -- load keymapping
 require('keymaps')

@@ -74,7 +74,10 @@ return require('packer').startup({function()
     }
 
     -- Ui
-    use 'kevinhwang91/nvim-hlslens'
+    use {
+        'kevinhwang91/nvim-hlslens',
+        config = function() require('hlslens').setup() end
+    }
     use {
         'romgrk/barbar.nvim',
         config = function() require('config/barbar') end
@@ -85,7 +88,13 @@ return require('packer').startup({function()
     }
     use {
         'tversteeg/registers.nvim',
-        config = function() vim.g.registers_window_border = "rounded" end
+        config = function()
+            require("registers").setup({
+                window = {
+                    border = "rounded"
+                }
+            })
+        end
     }
     use 'nvim-lualine/lualine.nvim'
     use {

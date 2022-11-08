@@ -28,11 +28,12 @@ vim.opt.lazyredraw = false
 vim.opt.so = 15
 
 -- Show blank characters
-vim.opt.list = false
+vim.opt.list = true
 
 vim.opt.listchars = {
-    space = "⋅",
-    eol = "↴",
+    trail = "·",
+    lead = "·",
+    tab = "»»",
 }
 
 -- proper terminal colors
@@ -93,12 +94,12 @@ vim.wo.fillchars = "fold: "
 
 -- smart dd
 local function smart_delete()
-	local current_line = vim.api.nvim_get_current_line() 
-	if current_line[1] == "" then
-		return '"_dd'
-	else
-		return 'dd'
-	end
+    local current_line = vim.api.nvim_get_current_line()
+    if current_line[1] == "" then
+        return '"_dd'
+    else
+        return 'dd'
+    end
 end
 
 vim.keymap.set( "n", "dd", smart_delete, { noremap = true, expr = true } )

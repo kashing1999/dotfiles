@@ -20,10 +20,6 @@ saga.init_lsp_saga({
     -- entry is a table type has these filed
     -- { bufnr, code, col, end_col, end_lnum, lnum, message, severity, source }
     diagnostic_header = { " ", " ", " ", "ﴞ " },
-    -- show diagnostic source
-    show_diagnostic_source = true,
-    -- add bracket or something with diagnostic source, just have 2 elements
-    diagnostic_source_bracket = {},
     -- use emoji lightbulb in default
     code_action_icon = "💡",
     -- if true can press number to execute the codeaction in codeaction window
@@ -31,7 +27,7 @@ saga.init_lsp_saga({
     -- same as nvim-lightbulb but async
     code_action_lightbulb = {
         enable = true,
-        sign = true,
+        sign = false,
         sign_priority = 20,
         virtual_text = true,
     },
@@ -51,7 +47,6 @@ saga.init_lsp_saga({
         exec = "<CR>",
     },
     rename_action_quit = "<C-c>",
-    definition_preview_icon = "  ",
     -- if you don't use nvim-lspconfig you must pass your server name and
     -- the related filetypes into this table
     -- like server_filetype_map = { metals = { "sbt", "scala" } }
