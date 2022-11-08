@@ -22,11 +22,6 @@ end
 remap('i', '<cr>', 'v:lua.MUtils.CR()', { expr = true, noremap = true })
 
 npairs.add_rules {
-  Rule(' ', ' ')
-    :with_pair(function (opts)
-      local pair = opts.line:sub(opts.col - 1, opts.col)
-      return vim.tbl_contains({ '()', '[]', '{}' }, pair)
-    end),
   Rule('( ', ' )')
       :with_pair(function() return false end)
       :with_move(function(opts)
