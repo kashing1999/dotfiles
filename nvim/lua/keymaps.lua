@@ -70,7 +70,7 @@ nest.applyKeymaps {
             {'n', '<Cmd>set nolist<CR>'},
         }};
 
-        {'r', '<Cmd>Telescope lsp_references<CR>'},
+        {'r', '<Cmd>lua require"telescope.builtin".lsp_references{jump_type="never"}<CR>'},
         {'d', '<Cmd>Telescope lsp_definitions<CR>'},
         {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
         {'a', '<Cmd>Lspsaga code_action<CR>'},
