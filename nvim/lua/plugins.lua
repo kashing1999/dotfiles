@@ -140,6 +140,10 @@ return require('packer').startup({function()
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup{} end
     }
+    use {
+        'ray-x/go.nvim',
+        config = function() require('go').setup{} end
+    }
 
     -- treesitter
     use {
