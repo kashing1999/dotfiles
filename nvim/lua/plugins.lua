@@ -138,11 +138,15 @@ return require('packer').startup({function()
     }
     use {
         'j-hui/fidget.nvim',
-        config = function() require('fidget').setup{} end
+        config = function() require('fidget').setup() end
     }
     use {
         'ray-x/go.nvim',
-        config = function() require('go').setup{} end
+        config = function() require('go').setup() end
+    }
+    use {
+        'ray-x/lsp_signature.nvim',
+        config = function() require('lsp_signature').setup(cfg) end
     }
 
     -- treesitter
