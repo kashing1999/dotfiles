@@ -96,3 +96,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
        vim.lsp.buf.format()
     end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+        require("go.format").gofmt()
+    end,
+})
