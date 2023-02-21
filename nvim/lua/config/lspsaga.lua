@@ -1,10 +1,7 @@
 local saga = require 'lspsaga'
 
--- change the lsp symbol kind
-local kind = require('lspsaga.lspkind')
-
 -- use custom config
-saga.init_lsp_saga({
+saga.setup({
     -- "single" | "double" | "rounded" | "bold" | "plus"
     border_style = "rounded",
     -- when cursor in saga window you config these to move
