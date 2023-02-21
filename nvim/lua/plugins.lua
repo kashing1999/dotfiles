@@ -1,91 +1,99 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd 'packadd packer.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup({function()
-    use 'wbthomason/packer.nvim'
-    use 'lewis6991/impatient.nvim'
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+return require('lazy').setup({
+    -- 'lewis6991/impatient.nvim',
 
     -- Neovim
-    use 'nvim-lua/plenary.nvim'
+    'nvim-lua/plenary.nvim',
 
     -- Quality of life
-    use 'jremmen/vim-ripgrep'
-    use 'szw/vim-maximizer'
-    use {
+    'jremmen/vim-ripgrep',
+    'szw/vim-maximizer',
+    {
         'lukas-reineke/indent-blankline.nvim',
         config = function() require('config/indent') end
-    }
-    use 'p00f/nvim-ts-rainbow'
-    use 'LionC/nest.nvim'
-    use {
+    },
+    'p00f/nvim-ts-rainbow',
+    'LionC/nest.nvim',
+    {
         'nvim-neorg/neorg',
         config = function() require('config/neorg') end
-    }
-    use {
+    },
+    {
         'kevinhwang91/nvim-bqf',
         config = function() require('bqf').setup({ auto_enable = true })
         end
-    }
-    use 'lambdalisue/suda.vim'
-    use {
+    },
+    'lambdalisue/suda.vim',
+    {
         'yamatsum/nvim-cursorline',
         config = function() require('config/cursorline') end
-    }
+    },
 
     -- Text editing
-    use {
+    {
         'kylechui/nvim-surround',
         config = function() require("nvim-surround").setup() end
-    }
-    use 'tpope/vim-commentary'
-    use {
+    },
+    'tpope/vim-commentary',
+    {
         'ggandor/lightspeed.nvim',
         config = function() require('config/lightspeed') end
-    }
-    use {
+    },
+    {
         'windwp/nvim-autopairs',
         config = function() require('config/autopairs') end
-    }
+    },
 
     -- Git
-    use 'tpope/vim-fugitive'
-    use {
+    'tpope/vim-fugitive',
+    {
         'lewis6991/gitsigns.nvim',
         config = function() require('config/git') end
-    }
+    },
 
     -- Color
-    use 'sainnhe/gruvbox-material'
-    use 'sainnhe/everforest'
-    use({
+    'sainnhe/gruvbox-material',
+    'sainnhe/everforest',
+    {
         "catppuccin/nvim",
         as = "catppuccin",
         config = function() require('config/catppuccin') end,
-        run = ":CatppuccinCompile",
-    })
-    use {
+        build = ":CatppuccinCompile",
+    },
+    {
         'norcalli/nvim-colorizer.lua',
         config = function() require('colorizer').setup() end
-    }
+    },
 
     -- Ui
-    use {
+    {
         'kevinhwang91/nvim-hlslens',
         config = function() require('hlslens').setup() end
-    }
-    use {
+    },
+    {
         'romgrk/barbar.nvim',
         config = function() require('config/barbar') end
-    }
-    use {
+    },
+    {
         'kyazdani42/nvim-web-devicons',
         config = function() require('nvim-web-devicons').setup() end
-    }
-    use {
+    },
+    {
         'tversteeg/registers.nvim',
         config = function()
             require("registers").setup({
@@ -94,74 +102,75 @@ return require('packer').startup({function()
                 }
             })
         end
-    }
-    use {
+    },
+    {
         'nvim-lualine/lualine.nvim',
         config = function() require('config/lualine').setup('auto') end
-    }
-    use {
+    },
+    {
         'akinsho/toggleterm.nvim',
         config = function() require('config/toggleterm') end
-    }
-    use {
+    },
+    {
         'startup-nvim/startup.nvim',
         config = function() require('config/startup') end
-    }
-    use {
+    },
+    {
         'kyazdani42/nvim-tree.lua',
         config = function() require('config/nvimtree') end
-    }
+    },
 
-    use {
+    {
         'luukvbaal/stabilize.nvim',
         config = function() require("stabilize").setup() end
-    }
+    },
 
     -- Telescope
-    use {
+    {
         'nvim-telescope/telescope.nvim',
         config = function() require('config/telescope') end
-    }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
+    },
 
     -- Lsp
-    use { 'ms-jpq/coq_nvim', branch = 'coq' } -- main one
-    use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
-    use 'simrat39/rust-tools.nvim'
-    use {
+    {
+        'ms-jpq/coq_nvim', branch = 'coq'
+    },
+    {
+        'ms-jpq/coq.artifacts', branch = 'artifacts'
+    },
+    'simrat39/rust-tools.nvim',
+    {
         'neovim/nvim-lspconfig',
         config = function() require('config/lsp') end
-    }
-    use {
+    },
+    {
         'glepnir/lspsaga.nvim',
         config = function() require('config/lspsaga') end
-    }
-    use {
+    },
+    {
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup() end
-    }
-    use {
+    },
+    {
         'ray-x/go.nvim',
         config = function() require('go').setup() end
-    }
-    use {
+    },
+    {
         'ray-x/lsp_signature.nvim',
         config = function() require('lsp_signature').setup(cfg) end
-    }
+    },
 
     -- treesitter
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
+        build = ':TSUpdate',
         config = function() require('config/treesitter') end
-    }
-    use {
+    },
+    {
         'romgrk/nvim-treesitter-context',
         config = function() require('treesitter-context').setup() end
-    }
-end,
-
-config = {
-    -- Move to lua dir so impatient.nvim can cache it
-    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
-}})
+    },
+})

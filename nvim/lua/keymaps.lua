@@ -10,9 +10,6 @@ nest.defaults = {
 }
 
 nest.applyKeymaps {
-    -- Remap space to leader
-    {'<space>', '<leader>' , options = { noremap = false }},
-
     -- Remap ; into :
     {';', ':', options = { noremap = true, silent = false }},
 
