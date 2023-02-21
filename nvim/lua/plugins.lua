@@ -30,10 +30,6 @@ return require('lazy').setup({
     'p00f/nvim-ts-rainbow',
     'LionC/nest.nvim',
     {
-        'nvim-neorg/neorg',
-        config = function() require('config/neorg') end
-    },
-    {
         'kevinhwang91/nvim-bqf',
         config = function() require('bqf').setup({ auto_enable = true })
         end
@@ -71,7 +67,6 @@ return require('lazy').setup({
     'sainnhe/everforest',
     {
         "catppuccin/nvim",
-        as = "catppuccin",
         config = function() require('config/catppuccin') end,
         build = ":CatppuccinCompile",
     },
@@ -117,6 +112,7 @@ return require('lazy').setup({
     },
     {
         'kyazdani42/nvim-tree.lua',
+        cmd = "NvimTreeToggle",
         config = function() require('config/nvimtree') end
     },
 
