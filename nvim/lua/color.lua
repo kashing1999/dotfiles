@@ -7,7 +7,9 @@ vim.api.nvim_create_autocmd("colorscheme", {
         vim.api.nvim_set_hl(0, "CursorColumn", { fg = vim.api.nvim_get_hl_by_name("ColorColumn", true).foreground, bg = vim.api.nvim_get_hl_by_name("ColorColumn", true).background })
 
         vim.api.nvim_set_hl(0, "EolSpace", { fg = vim.api.nvim_get_hl_by_name("Error", true).foreground })
-        vim.cmd[[match EolSpace /\s\+$/]]
+        vim.cmd([[
+            match EolSpace /\s\+$/
+        ]])
     end,
 })
 

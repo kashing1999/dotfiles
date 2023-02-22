@@ -15,37 +15,37 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 return require('lazy').setup({
-    -- 'lewis6991/impatient.nvim',
-
-    -- Neovim
-    'nvim-lua/plenary.nvim',
-
     -- Quality of life
     'jremmen/vim-ripgrep',
     'szw/vim-maximizer',
+    'p00f/nvim-ts-rainbow',
+    'LionC/nest.nvim',
+    'lambdalisue/suda.vim',
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function() require('config/indent') end
     },
-    'p00f/nvim-ts-rainbow',
-    'LionC/nest.nvim',
     {
         'kevinhwang91/nvim-bqf',
         config = function() require('bqf').setup({ auto_enable = true })
         end
     },
-    'lambdalisue/suda.vim',
     {
         'yamatsum/nvim-cursorline',
         config = function() require('config/cursorline') end
     },
+    {
+        'luukvbaal/stabilize.nvim',
+        config = function() require("stabilize").setup() end
+    },
+
 
     -- Text editing
+    'tpope/vim-commentary',
     {
         'kylechui/nvim-surround',
         config = function() require("nvim-surround").setup() end
     },
-    'tpope/vim-commentary',
     {
         'ggandor/lightspeed.nvim',
         config = function() require('config/lightspeed') end
@@ -65,6 +65,7 @@ return require('lazy').setup({
     -- Color
     'sainnhe/gruvbox-material',
     'sainnhe/everforest',
+    'folke/tokyonight.nvim',
     {
         "catppuccin/nvim",
         config = function() require('config/catppuccin') end,
@@ -112,18 +113,16 @@ return require('lazy').setup({
     },
     {
         'kyazdani42/nvim-tree.lua',
-        cmd = "NvimTreeToggle",
-        config = function() require('config/nvimtree') end
-    },
-
-    {
-        'luukvbaal/stabilize.nvim',
-        config = function() require("stabilize").setup() end
+        config = function() require('config/nvimtree') end,
+        cmd = "NvimTreeToggle"
     },
 
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
         config = function() require('config/telescope') end
     },
     {
@@ -131,13 +130,13 @@ return require('lazy').setup({
     },
 
     -- Lsp
+    'simrat39/rust-tools.nvim',
     {
         'ms-jpq/coq_nvim', branch = 'coq'
     },
     {
         'ms-jpq/coq.artifacts', branch = 'artifacts'
     },
-    'simrat39/rust-tools.nvim',
     {
         'neovim/nvim-lspconfig',
         config = function() require('config/lsp') end
