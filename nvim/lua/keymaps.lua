@@ -106,7 +106,7 @@ nest.applyKeymaps {
     -- nvim-telescope/telescope.nvim
     -- Find files using Telescope command-line sugar.
     { '<esc>', {
-        {'f', '<Cmd>lua require"telescope.builtin".find_files{no_ignore=true, hidden=true}<CR>'},
+        {'f', '<Cmd>Telescope find_files<CR>'},
         {'g', '<Cmd>Telescope live_grep<CR>'},
         {'b', '<Cmd>Telescope buffers<CR>'},
         {'t', '<Cmd>Telescope treesitter<CR>'},
