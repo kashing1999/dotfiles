@@ -15,6 +15,22 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 return require('lazy').setup({
+    -- Color
+    {
+        "catppuccin/nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('config/catppuccin')
+            require('color')
+        end,
+        build = ":CatppuccinCompile",
+    },
+    {
+        'norcalli/nvim-colorizer.lua',
+        config = function() require('colorizer').setup() end
+    },
+
     -- Quality of life
     'jremmen/vim-ripgrep',
     'szw/vim-maximizer',
@@ -23,7 +39,9 @@ return require('lazy').setup({
     'lambdalisue/suda.vim',
     {
         'lukas-reineke/indent-blankline.nvim',
-        config = function() require('config/indent') end
+        config = function() require('config/indent') end,
+        event = "BufReadPre",
+
     },
     {
         'kevinhwang91/nvim-bqf',
@@ -60,20 +78,6 @@ return require('lazy').setup({
     {
         'lewis6991/gitsigns.nvim',
         config = function() require('config/git') end
-    },
-
-    -- Color
-    'sainnhe/gruvbox-material',
-    'sainnhe/everforest',
-    'folke/tokyonight.nvim',
-    {
-        "catppuccin/nvim",
-        config = function() require('config/catppuccin') end,
-        build = ":CatppuccinCompile",
-    },
-    {
-        'norcalli/nvim-colorizer.lua',
-        config = function() require('colorizer').setup() end
     },
 
     -- Ui
@@ -139,6 +143,7 @@ return require('lazy').setup({
     },
     {
         'neovim/nvim-lspconfig',
+        lazy = false,
         config = function() require('config/lsp') end
     },
     {

@@ -3,11 +3,13 @@ local remap = vim.api.nvim_set_keymap
 
 -- autocomplete
 vim.g.coq_settings = {
-    auto_start = 'shut-up',
     keymap = { recommended = false }
 }
 
 local coq = require('coq')
+vim.cmd([[
+    COQnow --shut-up
+]])
 
 remap('i', '<esc>',   [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
 remap('i', '<c-c>',   [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })

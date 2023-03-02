@@ -6,6 +6,8 @@ treesitter.setup {
     ensure_installed = {
         "c",
         "lua",
+        "vim",
+        "help",
         "go",
         "gomod",
         "rust",

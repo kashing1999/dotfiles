@@ -13,10 +13,5 @@ require('plugins')
 -- load local.lua
 require('local')
 
--- prequire('packer_compiled')
-
 -- load keymapping
 require('keymaps')
-
--- color
-require('color')

@@ -1,6 +1,7 @@
 local color = 'catppuccin'
 
 vim.api.nvim_create_autocmd("colorscheme", {
+
     pattern = "*",
     callback = function(args)
         vim.api.nvim_set_hl(0, "MatchParen", { bg = vim.api.nvim_get_hl_by_name("Search", true).background })
