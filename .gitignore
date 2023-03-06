@@ -1,4 +1,5 @@
 nvim/lua/local.lua
 nvim/lua/packer_compiled.lua
+nvim/lazy-lock.json
 nvim/plugin/packer_compiled.lua
 .DS_Store
