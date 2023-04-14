@@ -27,7 +27,7 @@ return require('lazy').setup({
         build = ":CatppuccinCompile",
     },
     {
-        'norcalli/nvim-colorizer.lua',
+        'NvChad/nvim-colorizer.lua',
         config = function() require('colorizer').setup() end
     },
 

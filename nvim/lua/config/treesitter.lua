@@ -1,5 +1,4 @@
 local treesitter = require('nvim-treesitter.configs')
-local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
 treesitter.setup {
     -- ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -7,7 +6,7 @@ treesitter.setup {
         "c",
         "lua",
         "vim",
-        "help",
+        "vimdoc",
         "go",
         "gomod",
         "rust",
