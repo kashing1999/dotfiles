@@ -1,193 +1,169 @@
-local nest = require('nest')
+-- Remap ; into :
+vim.keymap.set('n', ';', ':', { noremap = true, silent = false } )
 
-nest.defaults = {
-    mode = 'n',
-    prefix = '',
-    options = {
-        noremap = true,
-        silent = true,
-    },
-}
+-- Smart dd which does not yank empty line
+local function smart_delete()
+    local current_line = vim.api.nvim_get_current_line()
+    if current_line[1] == "" then
+        return '"_dd'
+    else
+        return 'dd'
+    end
+end
+vim.keymap.set( "n", "dd", smart_delete, { noremap = true, expr = true } )
 
-nest.applyKeymaps {
-    -- Remap ; into :
-    {';', ':', options = { noremap = true, silent = false }},
+-- Don't put stuff deleted from c into buffer
+vim.keymap.set('n', 'c', '"_c')
 
-    -- Don't put stuff deleted from c into buffer
-    {'c', '"_c'},
+-- Center line on insert mode
+vim.keymap.set('n', 'i', 'zzi')
+vim.keymap.set('n', 'I', 'zzI')
+vim.keymap.set('n', 'a', 'zza')
+vim.keymap.set('n', 'A', 'zzA')
+vim.keymap.set('n', 'o', 'zzo')
+vim.keymap.set('n', 'O', 'zzO')
 
-    -- Empty current line
-    {'dl', '0D'},
+-- Y yanks to end of line instead of whole line
+vim.keymap.set('n', 'Y', 'y$')
 
-    -- Center line on insert mode
-    {'i', 'zzi'},
-    {'I', 'zzI'},
-    {'a', 'zza'},
-    {'A', 'zzA'},
-    {'o', 'zzo'},
-    {'O', 'zzO'},
+-- nvim-hlslens
+vim.keymap.set('n', 'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>zzzv")
+vim.keymap.set('n', 'N', "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>zzzv")
+vim.keymap.set('n', '*', "*<Cmd>lua require('hlslens').start()<CR>")
+vim.keymap.set('n', '#', "#<Cmd>lua require('hlslens').start()<CR>")
+vim.keymap.set('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>")
+vim.keymap.set('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>")
 
-    -- Y yanks to end of line instead of whole line
-    {'Y', 'y$'},
+-- Stop search highlight
+vim.keymap.set('n', '<esc><esc>', ':noh<CR>')
 
-    -- nvim-hlslens
-    {'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>zzzv"},
-    {'N', "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>zzzv"},
-    {'*', "*<Cmd>lua require('hlslens').start()<CR>"},
-    {'#', "#<Cmd>lua require('hlslens').start()<CR>"},
-    {'g*', "g*<Cmd>lua require('hlslens').start()<CR>"},
-    {'g#', "g#<Cmd>lua require('hlslens').start()<CR>"},
+-- Alternate between last open buffer
+vim.keymap.set('n', '<BS>', [[<c-^>\'"zz"]])
 
-    -- lsgsaga
-    {"gh", "<cmd>Lspsaga lsp_finder<CR>"},
+-- Use ripgrep to search for files
+vim.keymap.set('n', 'R', ':Rg -i %<Left><Left><Left><Left><Left> ', { silent = false })
 
-    -- Stop search highlight
-    {'<esc><esc>', ':noh<CR>'},
+-- delete up to line
+vim.keymap.set('n', 'dl', '0D')
 
-    {'<BS>', [[<c-^>\'"zz"]]},
+-- Faster save and quit
+vim.keymap.set('n', '<leader>q', '<Cmd>q<CR>')
+vim.keymap.set('n', '<leader>w', '<Cmd>w!<CR>')
 
-    -- Use ripgrep to search for files
-    {'R', ':Rg -i %<Left><Left><Left><Left><Left> ', options = { silent = false }},
+-- yank to clipboard
+vim.keymap.set('n', '<leader>y', '"+y')
 
-    -- leader key remaps
-    { '<leader>', {
-        -- Faster save and quit
-        {'q', '<Cmd>q<CR>'},
-        {'w', '<Cmd>w!<CR>'},
+-- create new split
+vim.keymap.set('n', '<leader>v', '<Cmd>vsplit<CR>')
+vim.keymap.set('n', '<leader>h', '<Cmd>split<CR>')
 
-        {'y', '"+y'},
+-- toggle list chars
+vim.keymap.set('n', '<leader>ll', '<Cmd>set list<CR>')
+vim.keymap.set('n', '<leader>ln', '<Cmd>set nolist<CR>')
 
-        {'v', '<Cmd>vsplit<CR>'},
-        {'h', '<Cmd>split<CR>'},
+-- lspsaga
+vim.keymap.set('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>')
+vim.keymap.set('n', '<leader>n', '<cmd>Lspsaga rename<CR>')
 
-        {'m', '<Cmd>MaximizerToggle<CR>'},
+-- telescope
+vim.keymap.set('n', '<leader>r', '<Cmd>lua require"telescope.builtin".lsp_references{jump_type="never"}<CR>')
+vim.keymap.set('n', '<leader>d', '<Cmd>Telescope lsp_definitions<CR>')
+vim.keymap.set('n', '<leader>s', '<Cmd>Telescope lsp_document_symbols<CR>')
+vim.keymap.set('n', '<leader>a', '<Cmd>Lspsaga code_action<CR>')
+vim.keymap.set('n', '<leader>e', '<Cmd>lua vim.diagnostic.open_float()<CR>')
+vim.keymap.set('n', '<esc>f', '<Cmd>Telescope find_files<CR>')
+vim.keymap.set('n', '<esc>g', '<Cmd>Telescope live_grep<CR>')
+vim.keymap.set('n', '<esc>b', '<Cmd>Telescope buffers<CR>')
+vim.keymap.set('n', '<esc>t', '<Cmd>Telescope treesitter<CR>')
+vim.keymap.set('n', '<esc>h', '<Cmd>Telescope help_tags<CR>')
+vim.keymap.set('n', '<esc>m', '<Cmd>Telescope man_pages<CR>')
+vim.keymap.set('n', '<esc>r', '<Cmd>Telescope registers<CR>')
 
-        {'l', {
-            {'l', '<Cmd>set list<CR>'},
-            {'n', '<Cmd>set nolist<CR>'},
-        }};
+-- git
+vim.keymap.set('n', '<leader>b', '<Cmd>Gitsigns toggle_current_line_blame<CR>')
+vim.keymap.set('n', '<leader>B', '<Cmd>Gitsigns blame_line<CR>')
+vim.keymap.set('n', '<leader>gg', '<Cmd>Git<CR>')
+vim.keymap.set('n', '<leader>gc', '<Cmd>Telescope git_bcommits<CR>')
+vim.keymap.set('n', '<leader>gC', '<Cmd>Telescope git_commits<CR>')
+vim.keymap.set('n', '<leader>gb', '<Cmd>Telescope git_branches<CR>')
+vim.keymap.set('n', '<leader>gs', '<Cmd>Telescope git_status<CR>')
 
-        {'r', '<Cmd>lua require"telescope.builtin".lsp_references{jump_type="never"}<CR>'},
-        {'d', '<Cmd>Telescope lsp_definitions<CR>'},
-        {'s', '<Cmd>Telescope lsp_document_symbols<CR>'},
-        {'a', '<Cmd>Lspsaga code_action<CR>'},
-        {'e', '<Cmd>lua vim.diagnostic.open_float()<CR>'},
+-- tabs
+vim.keymap.set('n', '<leader>1', '1gt')
+vim.keymap.set('n', '<leader>2', '2gt')
+vim.keymap.set('n', '<leader>3', '3gt')
+vim.keymap.set('n', '<leader>4', '4gt')
+vim.keymap.set('n', '<leader>5', '5gt')
+vim.keymap.set('n', '<leader>6', '6gt')
+vim.keymap.set('n', '<leader>7', '7gt')
+vim.keymap.set('n', '<leader>8', '8gt')
+vim.keymap.set('n', '<leader>9', '9gt')
+vim.keymap.set('n', '<leader>0', '<Cmd>tablast<CR>')
 
-        {'b', '<Cmd>Gitsigns toggle_current_line_blame<CR>'},
-        {'B', '<Cmd>Gitsigns blame_line<CR>'},
+-- Navigate splits
+vim.keymap.set('n', '<C-Left>',  '<C-w>h')
+vim.keymap.set('n', '<C-Down>',  '<C-w>j')
+vim.keymap.set('n', '<C-Up>',    '<C-w>k')
+vim.keymap.set('n', '<C-Right>', '<C-w>l')
 
-        {'g', {
-            {'g', '<Cmd>Git<CR>'},
+--Nvim tree focus
+vim.keymap.set('n', '<C-c>', '<Cmd>NvimTreeToggle<CR>')
 
-            {'c', '<Cmd>Telescope git_bcommits<CR>'},
-            {'C', '<Cmd>Telescope git_commits<CR>'},
-            {'b', '<Cmd>Telescope git_branches<CR>'},
-            {'s', '<Cmd>Telescope git_status<CR>'},
+-- Close tab
+vim.keymap.set('n', '<C-x>', '<Cmd>tabclose<CR>')
 
-        }};
+-- Fold
+vim.keymap.set('n', '<C-a>', 'za')
 
-        -- change root directory
-        {'cd', '<Cmd>lcd %:p:h<CR>', options = { silent = false }},
-        {'pwd', '<Cmd>pwd<CR>', options = { silent = false }},
+-- Replace all is aliased to S.
+vim.keymap.set('n', '<C-s>', ':%s//g<Left><Left>', { silent = false })
 
-        -- tabs
-        {'1', '1gt'},
-        {'2', '2gt'},
-        {'3', '3gt'},
-        {'4', '4gt'},
-        {'5', '5gt'},
-        {'6', '6gt'},
-        {'7', '7gt'},
-        {'8', '8gt'},
-        {'9', '9gt'},
-        {'0', '<Cmd>tablast<CR>'},
-    }},
+-- Moving text
+vim.keymap.set('n', '<C-j>', ':m .+1<CR>==')
+vim.keymap.set('n', '<C-k>', ':m .-2<CR>==')
 
-    -- nvim-telescope/telescope.nvim
-    -- Find files using Telescope command-line sugar.
-    { '<esc>', {
-        {'f', '<Cmd>Telescope find_files<CR>'},
-        {'g', '<Cmd>Telescope live_grep<CR>'},
-        {'b', '<Cmd>Telescope buffers<CR>'},
-        {'t', '<Cmd>Telescope treesitter<CR>'},
+-- romgrk/barbar.nvim
+vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
+vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>')
+vim.keymap.set('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>')
+vim.keymap.set('n', '<A->>', '<Cmd>BufferMoveNext<CR>')
 
-        {'h', '<Cmd>Telescope help_tags<CR>'},
-        {'m', '<Cmd>Telescope man_pages<CR>'},
-    }},
+vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
+vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>')
+vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>')
+vim.keymap.set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>')
+vim.keymap.set('n', '<A-5>', '<Cmd>BufferGoto 5<CR>')
+vim.keymap.set('n', '<A-6>', '<Cmd>BufferGoto 6<CR>')
+vim.keymap.set('n', '<A-7>', '<Cmd>BufferGoto 7<CR>')
+vim.keymap.set('n', '<A-8>', '<Cmd>BufferGoto 8<CR>')
+vim.keymap.set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>')
+vim.keymap.set('n', '<A-0>', '<Cmd>BufferLast<CR>')
 
-    { '<C-', {
-        -- Navigate splits
-        {'Left>',  '<C-w>h'},
-        {'Down>',  '<C-w>j'},
-        {'Up>',    '<C-w>k'},
-        {'Right>', '<C-w>l'},
+vim.keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>')
+vim.keymap.set('n', '<A-c>', '<Cmd>BufferClose<CR>')
+vim.keymap.set('n', '<A-b>', '<Cmd>BufferOrderByBufferNumber<CR>')
+vim.keymap.set('n', '<A-d>', '<Cmd>BufferOrderByDirectory<CR>')
+vim.keymap.set('n', '<A-l>', '<Cmd>BufferOrderByLanguage<CR>')
+vim.keymap.set('n', '<A-n>', '<Cmd>BufferOrderByWindowNumber<CR>')
+vim.keymap.set('n', '<A-s>', '<Cmd>BufferPick<CR>')
 
-        --Nvim tree focus
-        {'c>', '<Cmd>NvimTreeToggle<CR>'},
+-- Resize window
+vim.keymap.set('n', '<A-Left>',  '<Cmd>vertical resize -5<CR>')
+vim.keymap.set('n', '<A-Down>',  '<Cmd>resize +5<CR>')
+vim.keymap.set('n', '<A-Up>',    '<Cmd>resize -5<CR>')
+vim.keymap.set('n', '<A-Right>', '<Cmd>vertical resize +5<CR>')
 
-        -- Close tab
-        {'x>', '<Cmd>tabclose<CR>'},
+-- undo breakpoints
+vim.keymap.set('i', ',', ',<c-g>u')
+vim.keymap.set('i', '.', '.<c-g>u')
+vim.keymap.set('i', '!', '!<c-g>u')
+vim.keymap.set('i', '?', '?<c-g>u')
+vim.keymap.set('i', '(', '(<c-g>u')
+vim.keymap.set('i', '{', '{<c-g>u')
+vim.keymap.set('i', '[', '[<c-g>u')
 
-        -- Fold
-        {'a>', 'za'},
-
-        -- Replace all is aliased to S.
-        {'s>', ':%s//g<Left><Left>', options = { silent = false }},
-
-        -- Moving text
-        {'j>', ':m .+1<CR>=='},
-        {'k>', ':m .-2<CR>=='},
-    }},
-
-    { '<A-', {
-        -- romgrk/barbar.nvim
-        {',>', '<Cmd>BufferPrevious<CR>'},
-        {'.>', '<Cmd>BufferNext<CR>'},
-        {'<>', '<Cmd>BufferMovePrevious<CR>'},
-        {'>>', '<Cmd>BufferMoveNext<CR>'},
-
-        {'1>', '<Cmd>BufferGoto 1<CR>'},
-        {'2>', '<Cmd>BufferGoto 2<CR>'},
-        {'3>', '<Cmd>BufferGoto 3<CR>'},
-        {'4>', '<Cmd>BufferGoto 4<CR>'},
-        {'5>', '<Cmd>BufferGoto 5<CR>'},
-        {'6>', '<Cmd>BufferGoto 6<CR>'},
-        {'7>', '<Cmd>BufferGoto 7<CR>'},
-        {'8>', '<Cmd>BufferGoto 8<CR>'},
-        {'9>', '<Cmd>BufferGoto 9<CR>'},
-        {'0>', '<Cmd>BufferLast<CR>'},
-
-        {'p>', '<Cmd>BufferPin<CR>'},
-        {'c>', '<Cmd>BufferClose<CR>'},
-        {'b>', '<Cmd>BufferOrderByBufferNumber<CR>'},
-        {'d>', '<Cmd>BufferOrderByDirectory<CR>'},
-        {'l>', '<Cmd>BufferOrderByLanguage<CR>'},
-        {'n>', '<Cmd>BufferOrderByWindowNumber<CR>'},
-        {'s>', '<Cmd>BufferPick<CR>'},
-
-
-        -- Resize window
-        {'Left>',  '<Cmd>vertical resize -5<CR>'},
-        {'Down>',  '<Cmd>resize +5<CR>'},
-        {'Up>',    '<Cmd>resize -5<CR>'},
-        {'Right>', '<Cmd>vertical resize +5<CR>'},
-    }},
-
-    { mode = 'i', {
-        {',', ',<c-g>u'},
-        {'.', '.<c-g>u'},
-        {'!', '!<c-g>u'},
-        {'?', '?<c-g>u'},
-        {'(', '(<c-g>u'},
-        {'{', '{<c-g>u'},
-        {'[', '[<c-g>u'},
-    }},
-
-    { mode = 'v', {
-        {'<C-s>', ":s//g<Left><Left>", options = { silent = false }},
-        {'<C-j>', ":m '>+1<CR>gv=gv"},
-        {'<C-k>', ":m '<-2<CR>gv=gv"},
-        {'<space>y', '"+y'},
-        {'<space>a', ":<C-U>Lspsaga code_action<CR>"},
-    }},
-}
+vim.keymap.set('v', '<C-s>', ":s//g<Left><Left>", { silent = false })
+vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', '<space>y', '"+y')
+vim.keymap.set('v', '<space>a', ":<C-U>Lspsaga code_action<CR>")

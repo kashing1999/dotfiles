@@ -33,9 +33,7 @@ return require('lazy').setup({
 
     -- Quality of life
     'jremmen/vim-ripgrep',
-    'szw/vim-maximizer',
-    'p00f/nvim-ts-rainbow',
-    'LionC/nest.nvim',
+    'HiPhish/nvim-ts-rainbow',
     'lambdalisue/suda.vim',
     {
         'lukas-reineke/indent-blankline.nvim',
@@ -51,10 +49,6 @@ return require('lazy').setup({
     {
         'yamatsum/nvim-cursorline',
         config = function() require('config/cursorline') end
-    },
-    {
-        'luukvbaal/stabilize.nvim',
-        config = function() require("stabilize").setup() end
     },
 
 
@@ -127,20 +121,30 @@ return require('lazy').setup({
         dependencies = {
             'nvim-lua/plenary.nvim',
         },
-        config = function() require('config/telescope') end
+        config = function() require('config/telescope') end,
+        cmd = "Telescope"
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
     },
 
+    -- auto complete
+    {
+        'hrsh7th/nvim-cmp',
+        config = function() require('config/cmp') end,
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-nvim-lsp-signature-help',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+        }
+    },
+
     -- Lsp
     'simrat39/rust-tools.nvim',
-    {
-        'ms-jpq/coq_nvim', branch = 'coq'
-    },
-    {
-        'ms-jpq/coq.artifacts', branch = 'artifacts'
-    },
     {
         'neovim/nvim-lspconfig',
         lazy = false,
@@ -157,10 +161,6 @@ return require('lazy').setup({
     {
         'ray-x/go.nvim',
         config = function() require('go').setup() end
-    },
-    {
-        'ray-x/lsp_signature.nvim',
-        config = function() require('lsp_signature').setup(cfg) end
     },
 
     -- treesitter

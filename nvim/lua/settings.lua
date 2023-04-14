@@ -29,6 +29,9 @@ vim.opt.lazyredraw = false
 -- Scroll offset
 vim.opt.so = 15
 
+-- stabilize splits
+vim.o.splitkeep = "screen"
+
 -- Show blank characters
 vim.opt.list = true
 
@@ -92,15 +95,3 @@ vim.o.foldtext = [[
     substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)'
 ]]
 vim.wo.fillchars = "fold: "
-
--- Smart dd which does not yank empty line
-local function smart_delete()
-    local current_line = vim.api.nvim_get_current_line()
-    if current_line[1] == "" then
-        return '"_dd'
-    else
-        return 'dd'
-    end
-end
-
-vim.keymap.set( "n", "dd", smart_delete, { noremap = true, expr = true } )

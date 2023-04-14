@@ -1,30 +1,11 @@
 local lsp = require('lspconfig')
 local remap = vim.api.nvim_set_keymap
 
--- autocomplete
-vim.g.coq_settings = {
-    keymap = { recommended = false }
-}
-
-local coq = require('coq')
-vim.cmd([[
-    COQnow --shut-up
-]])
-
-remap('i', '<esc>',   [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
-remap('i', '<c-c>',   [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })
-remap('i', '<tab>',   [[pumvisible() ? "<c-n>" : "<tab>"]], { expr = true, noremap = true })
-remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], { expr = true, noremap = true })
-
 -- python lsp
-lsp.pylsp.setup{
-    coq.lsp_ensure_capabilities()
-}
+lsp.pylsp.setup{}
 
 -- clang lsp
-lsp.clangd.setup{
-    coq.lsp_ensure_capabilities()
-}
+lsp.clangd.setup{}
 
 -- rust lsp
 require('rust-tools').setup({
@@ -40,7 +21,6 @@ require('rust-tools').setup({
         },
     },
     server = {
-        coq.lsp_ensure_capabilities(),
         settings = {
             ["rust-analyzer"] = {
                 -- enable clippy on save
@@ -80,7 +60,6 @@ lsp.gopls.setup {
             staticcheck = true,
         },
     },
-    coq.lsp_ensure_capabilities()
 }
 
 -- diagnostic float config
