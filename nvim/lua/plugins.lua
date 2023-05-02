@@ -146,6 +146,7 @@ return require('lazy').setup({
 
     -- Lsp
     'simrat39/rust-tools.nvim',
+    'rust-lang/rust.vim',
     {
         'neovim/nvim-lspconfig',
         lazy = false,

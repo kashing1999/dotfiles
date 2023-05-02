@@ -1,6 +1,7 @@
 -- use custom config
 require('lspsaga').setup({
     ui = {
+        code_action = "",
         border = "rounded"
     },
     lightbulb = {
