@@ -23,7 +23,7 @@ vim.opt.splitright = true
 -- Live substitution
 vim.opt.inccommand = 'nosplit'
 
--- Lazy redraw to improve performance
+-- lazyredraw
 vim.opt.lazyredraw = false
 
 -- Scroll offset
@@ -37,7 +37,8 @@ vim.opt.list = true
 
 vim.opt.listchars = {
     trail = "·",
-    tab   = "==>",
+    tab   = "▏ ",
+    nbsp = "."
 }
 
 -- proper terminal colors
@@ -50,6 +51,9 @@ vim.opt.cursorcolumn = true
 vim.api.nvim_create_autocmd("WinEnter", {
     pattern = "*",
     callback = function(args)
+        vim.opt.listchars = {
+            tab = "▏ "
+        }
         vim.opt.cul = true
         vim.opt.cursorcolumn = true
     end,
@@ -60,6 +64,24 @@ vim.api.nvim_create_autocmd("WinLeave", {
     callback = function(args)
         vim.opt.cul = false
         vim.opt.cursorcolumn = false
+    end,
+})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    pattern = "*",
+    callback = function(args)
+        vim.opt.listchars = {
+            tab = "▏|>"
+        }
+    end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    callback = function(args)
+        vim.opt.listchars = {
+            tab = "▏ "
+        }
     end,
 })
 

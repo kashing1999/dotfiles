@@ -33,13 +33,17 @@ return require('lazy').setup({
 
     -- Quality of life
     'jremmen/vim-ripgrep',
-    'HiPhish/nvim-ts-rainbow',
     'lambdalisue/suda.vim',
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function() require('config/indent') end,
         event = "BufReadPre",
 
+    },
+    {
+        'HiPhish/rainbow-delimiters.nvim',
+        config = function() require('rainbow-delimiters') end,
+        event = "BufReadPre",
     },
     {
         'kevinhwang91/nvim-bqf',
@@ -158,7 +162,8 @@ return require('lazy').setup({
     },
     {
         'j-hui/fidget.nvim',
-        config = function() require('fidget').setup() end
+        config = function() require('fidget').setup() end,
+        branch = 'legacy'
     },
     {
         'ray-x/go.nvim',
