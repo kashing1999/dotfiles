@@ -169,6 +169,18 @@ return require('lazy').setup({
         'ray-x/go.nvim',
         config = function() require('go').setup() end
     },
+    {
+      "pmizio/typescript-tools.nvim",
+      dependencies = {
+          "nvim-lua/plenary.nvim",
+          "neovim/nvim-lspconfig"
+      },
+      config = function() require('config/typescript-tools') end,
+    },
+    {
+      'stevearc/conform.nvim',
+      config = function() require('config/conform') end,
+    },
 
     -- treesitter
     {

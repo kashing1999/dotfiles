@@ -107,3 +107,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         go_org_imports(1000)
     end,
 })
+
+conform = require('conform')
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.js,*.ts",
+    callback = function()
+        conform.format()
+    end,
+})

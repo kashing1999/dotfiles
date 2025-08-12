@@ -71,7 +71,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     pattern = "*",
     callback = function(args)
         vim.opt.listchars = {
-            tab = "▏|>"
+            tab = "▏=>"
         }
     end,
 })
