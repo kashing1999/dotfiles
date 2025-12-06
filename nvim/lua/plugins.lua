@@ -149,8 +149,12 @@ return require('lazy').setup({
     },
 
     -- Lsp
-    'simrat39/rust-tools.nvim',
     'rust-lang/rust.vim',
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^6', -- Recommended
+        lazy = false, -- This plugin is already lazy
+    },
     {
         'neovim/nvim-lspconfig',
         lazy = false,

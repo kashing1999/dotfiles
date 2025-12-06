@@ -8,6 +8,8 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 setopt appendhistory
 
+DOTNET_CLI_TELEMETRY_OPTOUT=true
+
 # Case insensitive tab completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # setopt MENU_COMPLETE
@@ -53,6 +55,15 @@ NEOVIDE_MULTIGRID=1
 # Path
 export PATH=/home/ks/.local/bin:$PATH
 export PATH=/home/ks/.cargo/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=/home/ks/go/bin:$PATH
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Android
+export ANDROID_HOME="/home/ks/.local/share/android"
+export ANDROID_NDK="/home/ks/.local/share/android/android-ndk-r27d"
+export PATH="/home/ks/.local/share/android/cmdline-tools/:$PATH"
+export PATH="/home/ks/.local/share/android/platform-tools/:$PATH"
 
 # cargo
 source "$HOME/.cargo/env"
@@ -75,6 +86,9 @@ alias r='ranger'
 # yay shortcuts
 alias fp="yay -Slq | fzf -m --preview 'yay -Si {1}' | yay -S -"
 alias dp="yay -Slq | fzf -m --preview 'yay -Si {1}' | yay --getpkgbuild -"
+
+# cd into windows
+alias cdw="cd /mnt/c/Users/ks"
 
 # fzf for autocomplete
 source /usr/share/doc/fzf/examples/key-bindings.zsh

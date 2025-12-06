@@ -1,36 +1,7 @@
-local lsp = require('lspconfig')
 local remap = vim.api.nvim_set_keymap
 
--- python lsp
-lsp.pylsp.setup{}
-
--- clang lsp
-lsp.clangd.setup{}
-
--- rust lsp
-require('rust-tools').setup({
-    tools = {
-        runnables = {
-            use_telescope = true,
-        },
-        inlay_hints = {
-            auto = true,
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-    server = {
-        settings = {
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy",
-                },
-            },
-        }
-    }
-})
+vim.lsp.config("pylsp", {})
+vim.lsp.config("clangd", {})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.rs",
@@ -41,7 +12,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- go lsp
-lsp.gopls.setup {
+vim.lsp.config("gopls", {
     cmd = {"gopls"},
     settings = {
         gopls = {
@@ -60,7 +31,7 @@ lsp.gopls.setup {
             staticcheck = true,
         },
     },
-}
+})
 
 -- diagnostic float config
 vim.diagnostic.config({
@@ -116,3 +87,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         conform.format()
     end,
 })
+
+vim.lsp.enable({'clangd', 'gopls', 'pylsp', 'rust-analyzer'})
